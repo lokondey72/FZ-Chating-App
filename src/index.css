@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* login css start */
+@layer components {
+  .apple-login-button,
+  .google-login-button {
+    @apply box-border shadow-[#00000029_0px_10px_36px_0px,#0000000f_0px_0px_0px_1px] cursor-pointer flex justify-center items-center text-[11px] gap-[5px] px-[15px] py-2.5 rounded-[20px] font-nunitoFont;
+  }
+  .apple-login-button {
+    @apply mb-2 text-slate-100 border-2 border-solid hover:border-black bg-black hover:border-transparent hover:bg-slate-100 hover:text-black;
+  }
+  .google-login-button {
+    @apply text-black border-2 border-solid border-[#747474] hover:border-transparent hover:bg-black hover:text-slate-100;
+  }
+  .apple-icon,
+  .google-icon {
+    @apply text-xl mb-px;
+  }
+}
+/* login css end */
