@@ -5,11 +5,11 @@ const ChatItems = ({imgUrl, idName, msg}) => {
         <div className="w-14 h-14 rounded-full overflow-hidden">
           <img src={imgUrl} alt="rikto-ltd-imgs" />
         </div>
-        <div className="w-24">
-          <h2>{idName}</h2>
-          <p>{msg}</p>
+        <div>
+          <h2 className="text-xl font-bold text-primary">{idName}</h2>
+          <p className="text-lg font-normal text-secandari">{msg}</p>
         </div>
-        <div className="ml-40">
+        <div className="ml-auto">
           <p>10:30 PM</p>
         </div>
       </div>

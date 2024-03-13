@@ -60,7 +60,7 @@ const SignUp = () => {
                 <p className="text-base text-[#747474] mb-2 font-nunitoFont">
                   Already have an account?
                   <span className="text-base underline text-navegrey cursor-pointer font-extrabold ml-px font-nunitoFont">
-                    <Link to="/">Login</Link>
+                    <Link to="/login">Login</Link>
                   </span>
                 </p>
               </div>

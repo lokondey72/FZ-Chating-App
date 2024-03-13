@@ -10,6 +10,7 @@ import Home from "./components/Home";
 import Layout from "./components/Layout";
 import Profile from "./components/pages/Profile";
 import Chat from "./components/pages/Chat/";
+import ChatBox from "./components/pages/ChatBox";
 
 function App() {
   const router = createBrowserRouter(

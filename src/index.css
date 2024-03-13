@@ -18,5 +18,8 @@
   .google-icon {
     @apply text-xl mb-px;
   }
+  .title{
+    @apply text-3xl font-bold text-primary
+  }
 }
 /* login css end */

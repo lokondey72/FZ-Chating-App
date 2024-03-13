@@ -5,11 +5,20 @@ import { FaPeopleGroup } from "react-icons/fa6";
 
 const Navbar = () => {
   return (
-    <nav className="w-64 h-screen fixed pt-10 bg-slate-400">
+    <nav className="w-64 h-screen shadow-50xl-r fixed pt-10 bg-slate-400">
       <div>
-        <div className="flex w-20 mb-10 text-center">
-          <img src="/public/FZ-app-login-logo.png" alt="FZ-app-login-logo" />
-          <h3 className="text-xl font-bold uppercase">Friends Zone</h3>
+        <div className="ml-6 inline-block">
+          <Link to="/">
+            <div className="flex w-20 mb-10 text-center">
+              <img
+                src="/public/FZ-app-login-logo.png"
+                alt="FZ-app-login-logo"
+              />
+              <h3 className="text-xl font-bold uppercase">
+                Friends Zone
+              </h3>
+            </div>
+          </Link>
         </div>
         <button>
           <Link to="/profile">
@@ -60,7 +69,7 @@ const Navbar = () => {
           <li className="text-slate-50 rounded-xl">
             <Link to="/">
               <p className="text-lg flex items-center gap-3 py-5 px-10">
-              <IoPeople />
+                <IoPeople />
                 People
               </p>
             </Link>

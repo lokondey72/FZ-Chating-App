@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      backgroundImage: {
+        'profile-img': "url('/profile-bg-img.jpg')",
+      },
       boxShadow: {
         '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
         "50xl-r": '25px 0px 20px -20px rgba(0,0,0,0.45)',
@@ -20,6 +23,7 @@ export default {
     },
     fontFamily: {
       nunitoFont: ['Nunito', 'sans-serif'],
+      interFont: ['Inter', 'sans-serif'],
   },
 },
   plugins: [],

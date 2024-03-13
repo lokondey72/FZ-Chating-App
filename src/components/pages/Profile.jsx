@@ -1,21 +1,22 @@
 import { FaEllipsisH } from "react-icons/fa";
+import ProfileItems from "./ProfileItems";
 
 const Profile = () => {
   return (
     <>
       <div className="w-full ml-64 mt-">
-        <div class="border border-gray-200 rounded-lg shadow bg-gray-500">
+        <div className="h-96 bg-profile-img bg-no-repeat bg-cover">
           <div class="flex justify-end px-4 pt-4">
             <FaEllipsisH />
           </div>
+        </div>
+        <div class="border border-gray-200 rounded-lg shadow">
           <div class="flex flex-col items-center pb-10">
-            <img
-              class="w-24 h-24 mb-3 rounded-full shadow-lg"
-              src="/public/WhatsApp-img.jpg"
-              alt="Bonnie image"
-            />
-            <div className="flex items-center gap-2">
-              <h5 class="mb-1 text-2xl font-bold text-gray-900 dark:text-white">
+            <div class="w-32 h-32 mb-3 overflow-hidden absolute top-80 rounded-full shadow-lg">
+              <img src="/public/WhatsApp-img.jpg" alt="Bonnie image" />
+            </div>
+            <div className="flex items-center gap-2 pt-20">
+              <h5 class="mb-1 text-2xl font-bold text-gray-900">
                 Bonnie Green
               </h5>
               <span>Nickname</span>
@@ -40,208 +41,36 @@ const Profile = () => {
           </div>
         </div>
 
-        <div className="flex ml-8 flex-wrap gap-5 mt-5">
-          <div>
-            <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-              <a href="#">
-                <img
-                  className="rounded-t-lg"
-                  src="/public/WhatsApp-img.jpg"
-                  alt="WhatsApp-img"
-                />
-              </a>
-              <div className="p-5">
-                <a href="#">
-                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    Noteworthy technology acquisitions 2021
-                  </h5>
-                </a>
-                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  Here are the biggest enterprise technology acquisitions of
-                  2021 so far, in reverse chronological order.
-                </p>
-                <a
-                  href="#"
-                  className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >
-                  Read more
-                </a>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-              <a href="#">
-                <img
-                  className="rounded-t-lg"
-                  src="/public/WhatsApp-img.jpg"
-                  alt="WhatsApp-img"
-                />
-              </a>
-              <div className="p-5">
-                <a href="#">
-                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    Noteworthy technology acquisitions 2021
-                  </h5>
-                </a>
-                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  Here are the biggest enterprise technology acquisitions of
-                  2021 so far, in reverse chronological order.
-                </p>
-                <a
-                  href="#"
-                  className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >
-                  Read more
-                  <svg
-                    className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 14 10"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M1 5h12m0 0L9 1m4 4L9 9"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-              <a href="#">
-                <div className="w-96 h-96">
-                  <img
-                    className="rounded-t-lg"
-                    src="/public/rikto-ltd-imgs.jpg"
-                    alt="WhatsApp-img"
-                  />
-                </div>
-              </a>
-              <div className="p-5">
-                <a href="#">
-                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    Noteworthy technology acquisitions 2021
-                  </h5>
-                </a>
-                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  Here are the biggest enterprise technology acquisitions of
-                  2021 so far, in reverse chronological order.
-                </p>
-                <a
-                  href="#"
-                  className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >
-                  Read more
-                  <svg
-                    className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 14 10"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M1 5h12m0 0L9 1m4 4L9 9"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-              <a href="#">
-                <img
-                  className="rounded-t-lg"
-                  src="/public/WhatsApp-img.jpg"
-                  alt="WhatsApp-img"
-                />
-              </a>
-              <div className="p-5">
-                <a href="#">
-                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    Noteworthy technology acquisitions 2021
-                  </h5>
-                </a>
-                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  Here are the biggest enterprise technology acquisitions of
-                  2021 so far, in reverse chronological order.
-                </p>
-                <a
-                  href="#"
-                  className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >
-                  Read more
-                  <svg
-                    className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 14 10"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M1 5h12m0 0L9 1m4 4L9 9"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-              <a href="#">
-                <img
-                  className="rounded-t-lg"
-                  src="/public/WhatsApp-img.jpg"
-                  alt="WhatsApp-img"
-                />
-              </a>
-              <div className="p-5">
-                <a href="#">
-                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    Noteworthy technology acquisitions 2021
-                  </h5>
-                </a>
-                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  Here are the biggest enterprise technology acquisitions of
-                  2021 so far, in reverse chronological order.
-                </p>
-                <a
-                  href="#"
-                  className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >
-                  Read more
-                  <svg
-                    className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 14 10"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M1 5h12m0 0L9 1m4 4L9 9"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </div>
+        <div className="w-full my-10">
+          <div className="flex justify-center flex-wrap gap-10">
+            <ProfileItems
+              imgUrl="/public/profile-bg-img.jpg"
+              profPera="Here are the biggest enterprise technology acquisitions of 2021 so
+            far, in reverse chronological order Here are the biggest enterprise technology acquisitions of 2021 so
+            far, in reverse chronological order Here are the biggest enterprise technology acquisitions of 2021 so
+            far, in reverse chronological order."
+            />
+            <ProfileItems
+              imgUrl="/public/WhatsApp-img.jpg"
+              profPera="Here are the biggest enterprise technology acquisitions of 2021 so
+            far, in reverse chronological order Here are the biggest enterprise technology acquisitions of 2021 so
+            far, in reverse chronological order Here are the biggest enterprise technology acquisitions of 2021 so
+            far, in reverse chronological order."
+            />
+            <ProfileItems
+              imgUrl="/public/friends-img.jpg"
+              profPera="Here are the biggest enterprise technology acquisitions of 2021 so
+            far, in reverse chronological order Here are the biggest enterprise technology acquisitions of 2021 so
+            far, in reverse chronological order Here are the biggest enterprise technology acquisitions of 2021 so
+            far, in reverse chronological order."
+            />
+            <ProfileItems
+              imgUrl="/public/uploded-you-img.jpg"
+              profPera="Here are the biggest enterprise technology acquisitions of 2021 so
+            far, in reverse chronological order Here are the biggest enterprise technology acquisitions of 2021 so
+            far, in reverse chronological order Here are the biggest enterprise technology acquisitions of 2021 so
+            far, in reverse chronological order."
+            />
           </div>
         </div>
       </div>
