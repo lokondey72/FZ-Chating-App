@@ -5,7 +5,7 @@ import { FaPeopleGroup } from "react-icons/fa6";
 
 const Navbar = () => {
   return (
-    <nav className="w-64 h-screen pt-10 bg-slate-400">
+    <nav className="w-64 h-screen fixed pt-10 bg-slate-400">
       <div>
         <div className="flex w-20 mb-10 text-center">
           <img src="/public/FZ-app-login-logo.png" alt="FZ-app-login-logo" />

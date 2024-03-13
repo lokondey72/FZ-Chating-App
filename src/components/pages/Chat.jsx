@@ -1,30 +1,38 @@
 import { Link } from "react-router-dom";
-import { FcSearch } from "react-icons/fc";
+import { FaSearch } from "react-icons/fa";
+import ChatItems from "./ChatItems";
 
 const chat = () => {
   return (
     <>
-      <div className=" bg-slate-600 w-1/4">
+      <div className="bg-[#FCFCFC] shadow-50xl ml-64 w-1/4 h-screen">
         <div>
-          <div>
-            <div className="flex justify-between items-center mx-6 mt-10 mb-6 text-xl font-semibold text-primary">
-              <h2 className="text-4xl font-bold">
+          <div className="mb-8">
+            <div className="flex justify-between items-center mx-7 mt-10 mb-6 text-lg font-semibold text-primary">
+              <h2 className="text-2xl font-bold">
                 <Link to="/chat">Chat</Link>
               </h2>
-              <button className="p-5 rounded-xl border-solid border-2 border-primary">
+              <button className="p-3 rounded-xl border-solid border-2 border-primary">
                 <Link to="#">Create Group</Link>
               </button>
             </div>
-            <div className="flex items-center justify-center p-5">
-              <div className="flex w-10 items-center justify-center rounded-tl-lg rounded-bl-lg border-r border-gray-400 bg-white p-5">
-                <FcSearch />
+            <div className="flex items-center border-black border rounded-lg justify-center mx-5">
+              <div className="p-[14px] rounded-l-lg bg-slate-300">
+                <FaSearch />
               </div>
               <input
                 type="text"
-                className="w-full py-4 rounded-r-lg bg-white pl-2 text-xl font-semibold outline-0"
-                placeholder="inpot name"
+                className="w-full py-2 rounded-r-lg bg-white pl-2 text-xl font-semibold outline-0"
+                placeholder="Search"
               />
             </div>
+          </div>
+          <div className="mx-7">
+            <ChatItems imgUrl="/public/rikto-ltd-imgs.jpg" idName="Jenny Wilson" msg="Love You....."/>
+            <ChatItems imgUrl="/public/WhatsApp-img.jpg" idName="Rikto Dey" msg="hate You....."/>
+            <ChatItems imgUrl="/public/rikto-ltd-imgs.jpg" idName="Jenny Wilson" msg="go....."/>
+            <ChatItems imgUrl="/public/WhatsApp-img.jpg" idName="Lokon Dey Sarker" msg="Love You....."/>
+            <ChatItems imgUrl="/public/rikto-ltd-imgs.jpg" idName="Jenny Wilson" msg="Love You....."/>
           </div>
         </div>
       </div>

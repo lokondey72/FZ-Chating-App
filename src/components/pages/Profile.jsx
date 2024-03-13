@@ -3,7 +3,7 @@ import { FaEllipsisH } from "react-icons/fa";
 const Profile = () => {
   return (
     <>
-      <div className="w-full mx-11 mt-10">
+      <div className="w-full ml-64 mt-">
         <div class="border border-gray-200 rounded-lg shadow bg-gray-500">
           <div class="flex justify-end px-4 pt-4">
             <FaEllipsisH />
@@ -40,7 +40,7 @@ const Profile = () => {
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-5 mt-5">
+        <div className="flex ml-8 flex-wrap gap-5 mt-5">
           <div>
             <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
               <a href="#">
