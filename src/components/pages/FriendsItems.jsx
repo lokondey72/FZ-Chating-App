@@ -1,4 +1,6 @@
-const ChatItems = ({ imgUrl, idName, msg, day }) => {
+import { FaEllipsisH } from "react-icons/fa";
+
+const FriendsItems = ({ imgUrl, idName }) => {
   return (
     <>
       <div className="flex cursor-pointer items-center my-5 gap-5">
@@ -7,15 +9,13 @@ const ChatItems = ({ imgUrl, idName, msg, day }) => {
         </div>
         <div>
           <h2 className="text-xl font-bold text-primary">{idName}</h2>
-          <p className="text-lg font-normal text-secandari">{msg}</p>
         </div>
         <div className="ml-auto">
-          <p>{day}</p>
-          <p>10:30 PM</p>
+          <FaEllipsisH />
         </div>
       </div>
     </>
   );
 };
 
-export default ChatItems;
+export default FriendsItems;

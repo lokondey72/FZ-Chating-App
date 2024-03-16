@@ -2,7 +2,7 @@ import HomeItems from "./pages/HomeItems";
 
 const Home = () => {
   return (
-    <div className="w-full my-10">
+    <div className="w-full mx-20 my-5">
       <div className="flex justify-center flex-wrap gap-14">
         <HomeItems
           imgUrl="/public/uploded-you-img.jpg"
@@ -20,6 +20,16 @@ const Home = () => {
           imgUrl="/public/rikto-ltd-imgs.jpg"
           usernam="Noteworthy technology acquisitions 2021"
           peragrap="Here are the biggest enterprise technology acquisitions of 2021 so
+            far, in reverse chronological order.Here are the biggest enterprise technology acquisitions of 2021 so
+            far, in reverse chronological order Here are the biggest enterprise technology acquisitions of 2021 so
+            far, in reverse chronological order.Here are the biggest enterprise technology acquisitions of 2021 so
+            far, in reverse chronological order.Here are the biggest enterprise technology acquisitions of 2021 so
+            far, in reverse chronological order.Here are the biggest enterprise technology acquisitions of 2021 so
+            far, in reverse chronological order.Here are the biggest enterprise technology acquisitions of 2021 so
+            far, in reverse chronological order Here are the biggest enterprise technology acquisitions of 2021 so
+            far, in reverse chronological order.Here are the biggest enterprise technology acquisitions of 2021 so
+            far, in reverse chronological order.Here are the biggest enterprise technology acquisitions of 2021 so
+            far, in reverse chronological order.Here are the biggest enterprise technology acquisitions of 2021 so
             far, in reverse chronological order."
         />
         <HomeItems
@@ -27,6 +37,9 @@ const Home = () => {
           peragrap="Here are the biggest enterprise technology acquisitions of 2021 so
             far, in reverse chronological order Here are the biggest enterprise technology acquisitions of 2021 so
             far, in reverse chronological order Here are the biggest enterprise technology acquisitions of 2021 so
+            far, in reverse chronological order.Here are the biggest enterprise technology acquisitions of 2021 so
+            far, in reverse chronological order.Here are the biggest enterprise technology acquisitions of 2021 so
+            far, in reverse chronological order.Here are the biggest enterprise technology acquisitions of 2021 so
             far, in reverse chronological order."
         />
       </div>

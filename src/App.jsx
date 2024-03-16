@@ -10,7 +10,8 @@ import Home from "./components/Home";
 import Layout from "./components/Layout";
 import Profile from "./components/pages/Profile";
 import Chat from "./components/pages/Chat/";
-import ChatBox from "./components/pages/ChatBox";
+import Groups from "./components/pages/Groups";
+import Friends from "./components/pages/Friends";
 
 function App() {
   const router = createBrowserRouter(
@@ -22,6 +23,8 @@ function App() {
           <Route index element={<Home />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="/chat" element={<Chat />}></Route>
+          <Route path="/group" element={<Groups />}></Route>
+          <Route path="/friends" element={<Friends />}></Route>
         </Route>
       </Route>
     )

@@ -1,4 +1,4 @@
-const ChatItems = ({ imgUrl, idName, msg, day }) => {
+const GroupsItems = ({ imgUrl, idName, msg }) => {
   return (
     <>
       <div className="flex cursor-pointer items-center my-5 gap-5">
@@ -10,7 +10,7 @@ const ChatItems = ({ imgUrl, idName, msg, day }) => {
           <p className="text-lg font-normal text-secandari">{msg}</p>
         </div>
         <div className="ml-auto">
-          <p>{day}</p>
+          <p>Yesterday</p>
           <p>10:30 PM</p>
         </div>
       </div>
@@ -18,4 +18,4 @@ const ChatItems = ({ imgUrl, idName, msg, day }) => {
   );
 };
 
-export default ChatItems;
+export default GroupsItems;

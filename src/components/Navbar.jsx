@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { FaHome, FaUser } from "react-icons/fa";
-import { IoChatboxEllipses, IoPeople } from "react-icons/io5";
+import { IoChatboxEllipses, IoPeople, IoSettings } from "react-icons/io5";
 import { FaPeopleGroup } from "react-icons/fa6";
 
 const Navbar = () => {
   return (
-    <nav className="w-64 h-screen shadow-50xl-r fixed pt-10 bg-slate-400">
+    <nav className="w-64 h-screen fixed overflow-y-scroll overflow-x-hidden shadow-50xl-r pt-10 bg-slate-400">
       <div>
         <div className="ml-6 inline-block">
           <Link to="/">
@@ -14,9 +14,7 @@ const Navbar = () => {
                 src="/public/FZ-app-login-logo.png"
                 alt="FZ-app-login-logo"
               />
-              <h3 className="text-xl font-bold uppercase">
-                Friends Zone
-              </h3>
+              <h3 className="text-xl font-bold uppercase">Friends Zone</h3>
             </div>
           </Link>
         </div>
@@ -26,9 +24,12 @@ const Navbar = () => {
               <div className="w-14 h-14 rounded-full overflow-hidden">
                 <img src="/public/WhatsApp-img.jpg" alt="" />
               </div>
-              <div>
+              <div className="mr-2">
                 <h2 className="text-xl font-semibold">Rikto Dey</h2>
                 <p>Edit Profile</p>
+              </div>
+              <div className="text-xl font-semibold">
+                <IoSettings />
               </div>
             </div>
           </Link>
@@ -51,7 +52,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="text-slate-50 rounded-xl">
-            <Link to="/">
+            <Link to="/group">
               <p className="text-lg flex items-center gap-3 py-5 px-10">
                 <FaPeopleGroup />
                 Group
@@ -59,7 +60,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="text-slate-50 rounded-xl">
-            <Link to="/">
+            <Link to="/friends">
               <p className="text-lg flex items-center gap-3 py-5 px-10">
                 <FaUser />
                 Friends

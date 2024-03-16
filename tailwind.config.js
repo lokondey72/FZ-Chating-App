@@ -7,7 +7,7 @@ export default {
         'profile-img': "url('/profile-bg-img.jpg')",
       },
       boxShadow: {
-        '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
+        'Uxl': '0px 25px 20px -19px rgba(0,0,0,0.45)',
         "50xl-r": '25px 0px 20px -20px rgba(0,0,0,0.45)',
         "50xl" : '32px 0px 15px -18px rgba(0,0,0,0.45) inset'
       },
