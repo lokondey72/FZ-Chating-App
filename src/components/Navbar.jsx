@@ -5,8 +5,8 @@ import { FaPeopleGroup } from "react-icons/fa6";
 
 const Navbar = () => {
   return (
-    <nav className="w-64 h-screen fixed overflow-y-scroll overflow-x-hidden shadow-50xl-r pt-10 bg-slate-400">
-      <div>
+    <nav>
+      <div className="w-64 h-screen fixed z-20 sm:overflow-y-scroll sm:overflow-x-hidden 2xl:overflow-y-hidden 2xl:overflow-x-hidden shadow-50xl-r pt-10 bg-slate-400">
         <div className="ml-6 inline-block">
           <Link to="/">
             <div className="flex w-20 mb-10 text-center">
@@ -28,7 +28,7 @@ const Navbar = () => {
                 <h2 className="text-xl font-semibold">Rikto Dey</h2>
                 <p>Edit Profile</p>
               </div>
-              <div className="text-xl font-semibold">
+              <div className="text-xl text-slate-50 font-semibold">
                 <IoSettings />
               </div>
             </div>
@@ -68,7 +68,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="text-slate-50 rounded-xl">
-            <Link to="/">
+            <Link to="/people">
               <p className="text-lg flex items-center gap-3 py-5 px-10">
                 <IoPeople />
                 People

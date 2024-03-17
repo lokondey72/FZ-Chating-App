@@ -12,6 +12,8 @@ import Profile from "./components/pages/Profile";
 import Chat from "./components/pages/Chat/";
 import Groups from "./components/pages/Groups";
 import Friends from "./components/pages/Friends";
+import Game from "./components/pages/Game";
+import People from "./components/pages/People";
 
 function App() {
   const router = createBrowserRouter(
@@ -19,12 +21,14 @@ function App() {
       <Route>
         <Route path="/signup" element={<SignUp />}></Route>
         <Route path="/login" element={<LogIn />}></Route>
+        <Route path="/game" element={<Game />}></Route>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="/chat" element={<Chat />}></Route>
           <Route path="/group" element={<Groups />}></Route>
           <Route path="/friends" element={<Friends />}></Route>
+          <Route path="/people" element={<People />}></Route>
         </Route>
       </Route>
     )
