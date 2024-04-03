@@ -4,16 +4,16 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import SignUp from "./components/pages/SignUp";
-import LogIn from "./components/pages/LogIn";
+import SignUp from "./pages/SignUp";
+import LogIn from "./pages/LogIn";
 import Home from "./components/Home";
 import Layout from "./components/Layout";
-import Profile from "./components/pages/Profile";
-import Chat from "./components/pages/Chat/";
-import Groups from "./components/pages/Groups";
-import Friends from "./components/pages/Friends";
-import Game from "./components/pages/Game";
-import People from "./components/pages/People";
+import Profile from "./pages/Profile";
+import Chat from "./pages/Chat/";
+import Groups from "./pages/Groups";
+import Friends from "./pages/Friends";
+import Game from "./pages/Game";
+import People from "./pages/People";
 
 function App() {
   const router = createBrowserRouter(

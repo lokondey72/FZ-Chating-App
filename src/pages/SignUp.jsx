@@ -1,71 +1,77 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-// import { FaCheckCircle } from "react-icons/fa";
-import { MdCancel, MdError } from "react-icons/md";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+} from "firebase/auth";
+import { MdError } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const SignUp = () => {
   const auth = getAuth();
+  const navigate = useNavigate();
   let [userName, setUserName] = useState("");
+  let [lastName, setLastName] = useState("");
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
-  let [confirmPassword, setConfirmPassword] = useState("");
   const [userError, setUserError] = useState({
     nameError: "",
+    lastNameError: "",
     emailError: "",
     passwordError: "",
-    confirmPasswordError: "",
   });
 
   const heandelSignUp = () => {
     if (!userName) {
-      setUserError({ nameError: "Please enter a username!" });
+      setUserError({ nameError: "Enter your firstname !" });
       console.log("invalid username");
+    } else if (!lastName) {
+      setUserError({ lastNameError: "Enter your lastname !" });
+      console.log("invalid Email");
     } else if (!email) {
-      setUserError({ emailError: "Please enter a email !" });
+      setUserError({ emailError: "Enter your email !" });
       console.log("invalid Email");
     } else if (!password) {
-      setUserError({ passwordError: "Please enter a Password !" });
+      setUserError({ passwordError: "Enter your Password !" });
       console.log("invalid password");
-    } else if (!confirmPassword) {
-      setUserError({ confirmPasswordError: "Password don't match !" });
-      console.log("invalid confirm password");
     } else {
-      createUserWithEmailAndPassword(
-        auth,
-        email,
-        password,
-        confirmPassword,
-        userName
-      )
+      createUserWithEmailAndPassword(auth, email, password, userName, lastName)
         .then(() => {
-          console.log("SignUp successfull");
-          toast.success("SignUp successfull", {
-            position: "top-center",
-            autoClose: 5000,
-            closeOnClick: true,
-            theme: "light",
-          });
+          sendEmailVerification(auth.currentUser);
+          toast.success(
+            "SignUp successfull... Please verify your email address",
+            {
+              position: "top-center",
+              autoClose: 5000,
+              closeOnClick: true,
+              theme: "light",
+            }
+          );
           setUserName("");
+          setLastName("");
           setEmail("");
           setPassword("");
-          setConfirmPassword("");
+          setUserError("");
+          setTimeout(() => {
+            navigate("/login");
+          }, 4000);
         })
         .catch((error) => {
           console.log(error.code);
           if (error.code.includes("auth/invalid-email")) {
-            setUserError({ emailError: "invalid email !" });
-          }
-          // else if (error.code.includes("auth/email-already-in-use")) {
-          //   setUserError({ emailError: "You already have an account!" });
-          // }
-          else if (error.code.includes("auth/weak-password")) {
-            setUserError({ passwordError: "Please strong password!" });
+            setUserError({ emailError: "Enter a valid email !" });
+          } else if (error.code.includes("auth/email-already-in-use")) {
+            alert("You already have an account!");
+            // setUserError({ emailError: "You already have an account!" });
           } else if (error.code.includes("auth/weak-password")) {
-            setUserError({ confirmPasswordError: "Please strong password!" });
+            setUserError({ passwordError: "Please strong password!" });
           }
+          setUserName("");
+          setLastName("");
+          setEmail("");
+          setPassword("");
         });
     }
   };
@@ -96,7 +102,7 @@ const SignUp = () => {
                     value={userName}
                     onChange={(e) => setUserName(e.target.value)}
                     type="text"
-                    placeholder="Username"
+                    placeholder="First name"
                     className="w-full font-nunitoFont p-[0.8em] border box-border px-[15px] py-3 rounded-3xl border-solid border-[#c0c0c0]"
                   />
                   {userError.nameError && (
@@ -107,6 +113,25 @@ const SignUp = () => {
                   )}
                 </div>
                 <div>
+                  <input
+                    value={lastName}
+                    onChange={(e) => {
+                      setLastName(e.target.value), setUserError("");
+                    }}
+                    type="text"
+                    placeholder="Last name"
+                    className="w-full font-nunitoFont p-[0.8em] border box-border px-[15px] py-3 rounded-3xl border-solid border-[#c0c0c0]"
+                  />
+                  {userError.lastNameError && (
+                    <p className="pl-2 flex items-center gap-1 text-red-400">
+                      <MdError />
+                      {userError.lastNameError}
+                    </p>
+                  )}
+                </div>
+              </div>
+              <div className="flex gap-2">
+                <div className="my-[1.25em]">
                   <input
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -121,8 +146,6 @@ const SignUp = () => {
                     </p>
                   )}
                 </div>
-              </div>
-              <div className="flex gap-2">
                 <div className="my-[1.25em]">
                   <input
                     value={password}
@@ -135,21 +158,6 @@ const SignUp = () => {
                     <p className="pl-2 flex items-center gap-1 text-red-400">
                       <MdError />
                       {userError.passwordError}
-                    </p>
-                  )}
-                </div>
-                <div className="my-[1.25em]">
-                  <input
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    type="password"
-                    placeholder="Confirm password"
-                    className="w-full font-nunitoFont p-[0.8em] border box-border px-[15px] py-3 rounded-3xl border-solid border-[#c0c0c0]"
-                  />
-                  {userError.confirmPasswordError && (
-                    <p className="pl-2 flex items-center gap-1 text-red-400">
-                      <MdError />
-                      {userError.confirmPasswordError}
                     </p>
                   )}
                 </div>

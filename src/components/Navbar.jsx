@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { FaHome, FaUser } from "react-icons/fa";
 import { IoChatboxEllipses, IoPeople, IoSettings } from "react-icons/io5";
-import { FaPeopleGroup } from "react-icons/fa6";
+import { RiGroup2Fill } from "react-icons/ri";
 
 const Navbar = () => {
   return (
@@ -54,7 +54,7 @@ const Navbar = () => {
           <li className="text-slate-50 rounded-xl">
             <Link to="/group">
               <p className="text-lg flex items-center gap-3 py-5 px-10">
-                <FaPeopleGroup />
+                <RiGroup2Fill />
                 Group
               </p>
             </Link>

@@ -19,11 +19,13 @@ const HomeHeader = () => {
               class="bg-white text-[#646464] w-60 transition-all px-4 py-3 rounded-s-3xl"
               placeholder="Search"
             />
-            <IoSearchCircleSharp className="text-5xl bg-white rounded-e-3xl" />
+            <button>
+              <IoSearchCircleSharp className="text-5xl bg-white rounded-e-3xl" />
+            </button>
           </div>
           <div className="flex gap-10 mr-28">
             <div className="flex w-full justify-center gap-x-1.5 rounded-xl px-2 py-2 text-sm font-semibold text-gray-900 shadow-sm hover:text-white hover:bg-gray-800">
-              <Link>
+              <Link to="/">
                 <SiHomebridge className="flex gap-5 text-4xl" />
               </Link>
             </div>

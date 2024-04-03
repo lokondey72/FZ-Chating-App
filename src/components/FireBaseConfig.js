@@ -1,13 +1,12 @@
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC6SJCn_hUYI4qDnd1BOrxfLcnFol1vIlY",
-  authDomain: "friends-zone-chat-app.firebaseapp.com",
-  projectId: "friends-zone-chat-app",
-  storageBucket: "friends-zone-chat-app.appspot.com",
-  messagingSenderId: "31033165835",
-  appId: "1:31033165835:web:031203fea1c7ff724cdf0e",
-  databaseURL: "https://DATABASE_NAME.firebaseio.com",
+  apiKey: "AIzaSyAEAIR_Itl38sUbg37qKbE9To1Mv8AAcrQ",
+  authDomain: "friend-zone-app-e6612.firebaseapp.com",
+  projectId: "friend-zone-app-e6612",
+  storageBucket: "friend-zone-app-e6612.appspot.com",
+  messagingSenderId: "712673870170",
+  appId: "1:712673870170:web:62fbd1faf62bb7ff47f363",
 };
 
 const app = initializeApp(firebaseConfig);

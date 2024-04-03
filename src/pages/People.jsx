@@ -1,6 +1,6 @@
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import FriendsItems from "./FriendsItems";
+// import FriendsItems from "./FriendsItems";
 import PeopleItems from "./PeopleItems";
 
 const People = () => {

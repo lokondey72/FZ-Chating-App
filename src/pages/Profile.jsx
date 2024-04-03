@@ -5,7 +5,7 @@ import HomeHeader from "./HomeHeader";
 const Profile = () => {
   return (
     <>
-        <HomeHeader/>
+      <HomeHeader />
       <div className="w-full ml-64">
         <div className="h-96 bg-profile-img bg-no-repeat bg-cover">
           <div class="flex justify-end px-4 pt-4">
