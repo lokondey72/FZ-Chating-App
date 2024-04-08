@@ -3,12 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 export const userSlice = createSlice({
   name: "user",
   initialState: {
-    value: 0,
+    user: JSON.parse(localStorage.getItem("user"))
+      ? JSON.parse(localStorage.getItem("user"))
+      : null,
   },
   reducers: {
     logeduser: (state, action) => {
-      console.log(payload);
-      state.value;
+      state.user = action.payload;
     },
   },
 });

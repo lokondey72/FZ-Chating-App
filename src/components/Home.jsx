@@ -2,6 +2,8 @@ import HomeHeader from "../pages/HomeHeader";
 import HomeItems from "../pages/HomeItems";
 
 const Home = () => {
+  const userFromlocal = JSON.parse(localStorage.getItem("user"));
+  console.log("useFromlocal=======>", userFromlocal);
   return (
     <>
       <div className="w-full">

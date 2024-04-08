@@ -48,6 +48,17 @@ const HomeDropdone = () => {
                   Account settings
                 </a>
               </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-700 block px-4 py-2 text-sm"
+                  role="menuitem"
+                  tabindex="-1"
+                  id="menu-item-0"
+                >
+                  Log Out
+                </a>
+              </li>
             </ul>
           ) : null}
         </div>

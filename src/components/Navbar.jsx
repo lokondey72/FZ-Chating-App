@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import { FaHome, FaUser } from "react-icons/fa";
 import { IoChatboxEllipses, IoPeople, IoSettings } from "react-icons/io5";
 import { RiGroup2Fill } from "react-icons/ri";
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
+  const user = useSelector((state) => state.userSlice.user);
   return (
     <nav>
       <div className="w-64 h-screen fixed z-20 sm:overflow-y-scroll sm:overflow-x-hidden 2xl:overflow-y-hidden 2xl:overflow-x-hidden shadow-50xl-r pt-10 bg-slate-400">
@@ -22,10 +24,10 @@ const Navbar = () => {
           <Link to="/profile">
             <div className="flex items-center gap-2 p-2 mx-4 mb-10">
               <div className="w-14 h-14 rounded-full overflow-hidden">
-                <img src="/public/WhatsApp-img.jpg" alt="" />
+                <img src={user?.photoURL} alt="" />
               </div>
               <div className="mr-2">
-                <h2 className="text-xl font-semibold">Rikto Dey</h2>
+                <h2 className="text-xl font-semibold">{user?.displayName}</h2>
                 <p>Edit Profile</p>
               </div>
               <div className="text-xl text-slate-50 font-semibold">

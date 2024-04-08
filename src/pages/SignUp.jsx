@@ -4,6 +4,7 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   sendEmailVerification,
+  updateProfile,
 } from "firebase/auth";
 import { MdError } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
@@ -40,23 +41,28 @@ const SignUp = () => {
       createUserWithEmailAndPassword(auth, email, password, userName, lastName)
         .then(() => {
           sendEmailVerification(auth.currentUser);
-          toast.success(
-            "SignUp successfull... Please verify your email address",
-            {
-              position: "top-center",
-              autoClose: 5000,
-              closeOnClick: true,
-              theme: "light",
-            }
-          );
-          setUserName("");
-          setLastName("");
-          setEmail("");
-          setPassword("");
-          setUserError("");
-          setTimeout(() => {
-            navigate("/login");
-          }, 4000);
+          updateProfile(auth.currentUser, {
+            displayName: (lastName, userName),
+            photoURL: "/public/user-dufolt-img.png",
+          }).then((res) => {
+            toast.success(
+              "SignUp successfull... Please verify your email address",
+              {
+                position: "top-center",
+                autoClose: 5000,
+                closeOnClick: true,
+                theme: "light",
+              }
+            );
+            setUserName("");
+            setLastName("");
+            setEmail("");
+            setPassword("");
+            setUserError("");
+            setTimeout(() => {
+              navigate("/login");
+            }, 4000);
+          });
         })
         .catch((error) => {
           console.log(error.code);

@@ -27,56 +27,55 @@ const LogIn = () => {
     } else if (loginData.password == "") {
       setPasswordError("Please enter your Password !");
     } else {
-      signInWithEmailAndPassword(
-        auth,
-        loginData.email,
-        loginData.password
-      ).then((res) => {
-        if (res.user.emailVerified == false) {
-          toast.error("Your email is not Verified", {
-            position: "top-center",
-            autoClose: 3000,
-            closeOnClick: true,
-            theme: "light",
-          });
-        } else {
-          toast.success("Login successfull...", {
-            position: "top-center",
-            autoClose: 3000,
-            closeOnClick: true,
-            theme: "light",
-          });
-          // setTimeout(() => {
-          //   navigate("/");
-          // }, 1500);
-        }
-        disptch(logeduser("Hloo"));
-        console.log(res);
-        // set(ref(db, "users/" + res.user.uid), {
-        //   username: res.user.displayName,
-        //   email: res.user.email,
-        //   profile_picture: res.user.photoURL,
-        // });
-      });
-      // .catch((error) => {
-      //   if (error.code.includes("auth/invalid-email")) {
-      //     setEmailError("Enter a valid email !");
-      //   } else if (error.code.includes("auth/invalid-credential")) {
-      //     toast.error("Account not found! Please Sign Up", {
-      //       position: "top-center",
-      //       autoClose: 5000,
-      //       closeOnClick: true,
-      //       theme: "light",
-      //     });
-      //   } else if (error.code.includes("auth/too-many-requests")) {
-      //     toast.error("Too many request! Please try again after sometime", {
-      //       position: "top-center",
-      //       autoClose: 5000,
-      //       closeOnClick: true,
-      //       theme: "light",
-      //     });
-      //   }
-      // });
+      signInWithEmailAndPassword(auth, loginData.email, loginData.password)
+        .then((res) => {
+          if (res.user.emailVerified == false) {
+            toast.error("Your email is not Verified", {
+              position: "top-center",
+              autoClose: 3000,
+              closeOnClick: true,
+              theme: "light",
+            });
+          } else {
+            set(ref(db, "users/" + res.user.uid), {
+              username: res.user.displayName,
+              email: res.user.email,
+              profile_picture: res.user.photoURL,
+            }).then(() => {
+              console.log(res);
+              toast.success("Login successfull...", {
+                position: "top-center",
+                autoClose: 3000,
+                closeOnClick: true,
+                theme: "light",
+              });
+              localStorage.setItem("user", JSON.stringify(res.user));
+              disptch(logeduser(res.user));
+              setTimeout(() => {
+                navigate("/");
+              }, 1500);
+            });
+          }
+        })
+        .catch((error) => {
+          if (error.code.includes("auth/invalid-email")) {
+            setEmailError("Enter a valid email !");
+          } else if (error.code.includes("auth/invalid-credential")) {
+            toast.error("Account not found! Please Sign Up", {
+              position: "top-center",
+              autoClose: 5000,
+              closeOnClick: true,
+              theme: "light",
+            });
+          } else if (error.code.includes("auth/too-many-requests")) {
+            toast.error("Too many request! Please try again after sometime", {
+              position: "top-center",
+              autoClose: 5000,
+              closeOnClick: true,
+              theme: "light",
+            });
+          }
+        });
     }
   };
 
