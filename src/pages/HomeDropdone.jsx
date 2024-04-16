@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { CgMenuRound } from "react-icons/cg";
 import { IoPersonCircle } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const HomeDropdone = () => {
   const [open, setOpen] = useState("");
@@ -49,15 +50,16 @@ const HomeDropdone = () => {
                 </a>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  onClick={localStorage.setItem("user", JSON.stringify(""))}
+                  to="/login"
                   className="text-gray-700 block px-4 py-2 text-sm"
                   role="menuitem"
                   tabindex="-1"
                   id="menu-item-0"
                 >
                   Log Out
-                </a>
+                </Link>
               </li>
             </ul>
           ) : null}

@@ -8,7 +8,7 @@ const Home = () => {
     <>
       <div className="w-full">
         <HomeHeader />
-        <div className="w-full ml-auto bg-slate-400"></div>
+        {/* <div className="w-full ml-auto bg-slate-400"></div> */}
         <div className="flex justify-center flex-wrap mx-20  mt-36 gap-14">
           <HomeItems
             imgUrl="/public/Rikto-ltd.jpg"
