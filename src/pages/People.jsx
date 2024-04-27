@@ -2,8 +2,31 @@ import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 // import FriendsItems from "./FriendsItems";
 import PeopleItems from "./PeopleItems";
+import { getDatabase, ref, onValue } from "firebase/database";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const People = () => {
+  const db = getDatabase();
+  const [userList, setUserList] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const user = useSelector((state) => state.userSlice.user);
+
+  useEffect(() => {
+    const starCountRef = ref(db, "users/");
+    let arr = [];
+    onValue(starCountRef, (snapshot) => {
+      snapshot.forEach((item) => {
+        if (item.key !== user.uid) {
+          arr.push({ ...item.val(), key: item.key });
+        }
+        setUserList(arr);
+        setLoading(false);
+      });
+    });
+  }, []);
+  console.log(userList);
+
   return (
     <>
       <div className="bg-[#FCFCFC] overflow-y-scroll overflow-x-hidden ml-64 w-1/4 h-screen">
@@ -26,23 +49,13 @@ const People = () => {
             </div>
           </div>
           <div className="mx-7 mt-40">
-            <PeopleItems />
-            <PeopleItems />
-            <PeopleItems />
-            <PeopleItems />
-            <PeopleItems />
-            <PeopleItems />
-            <PeopleItems />
-            <PeopleItems />
-            <PeopleItems />
-            <PeopleItems />
-            <PeopleItems />
-            <PeopleItems />
-            <PeopleItems />
-            <PeopleItems />
-            <PeopleItems />
-            <PeopleItems />
-            <PeopleItems />
+            {loading ? (
+              <p>Loading Data...</p>
+            ) : (
+              userList.map((item) => (
+                <PeopleItems userData={item} key={item?.key} />
+              ))
+            )}
           </div>
         </div>
       </div>

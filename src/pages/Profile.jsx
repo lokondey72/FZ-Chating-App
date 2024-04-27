@@ -17,7 +17,7 @@ const Profile = () => {
         <div class="border border-gray-200 rounded-lg shadow">
           <div class="flex flex-col items-center pb-10">
             <div class="w-32 h-32 mb-3 overflow-hidden absolute top-80 rounded-full shadow-lg">
-              <img src={user?.photoURL} alt="Bonnie image" />
+              <img src={user?.photoURL} alt="Bonnie image" className="w-full" />
             </div>
             <div className="flex items-center gap-2 pt-20">
               <h5 class="mb-1 text-2xl font-bold text-gray-900">

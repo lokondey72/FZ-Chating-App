@@ -42,7 +42,7 @@ const SignUp = () => {
         .then(() => {
           sendEmailVerification(auth.currentUser);
           updateProfile(auth.currentUser, {
-            displayName: (lastName, userName),
+            displayName: userName + " " + lastName,
             photoURL: "/public/user-dufolt-img.png",
           }).then((res) => {
             toast.success(

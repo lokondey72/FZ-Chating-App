@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { FaHome, FaUser } from "react-icons/fa";
 import { IoChatboxEllipses, IoPeople, IoSettings } from "react-icons/io5";
 import { RiGroup2Fill } from "react-icons/ri";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const user = useSelector((state) => state.userSlice.user);
@@ -78,6 +78,19 @@ const Navbar = () => {
             </Link>
           </li>
         </ul>
+        <div className="flex justify-center">
+          <button className="bg-primary px-6 py-2 rounded-lg">
+            <Link
+              to="#"
+              className="text-slate-50 block px-4 py-2 text-sm"
+              role="menuitem"
+              tabindex="-1"
+              id="menu-item-0"
+            >
+              Log Out
+            </Link>
+          </button>
+        </div>
       </div>
     </nav>
   );
