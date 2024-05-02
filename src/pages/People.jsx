@@ -25,7 +25,7 @@ const People = () => {
       });
     });
   }, []);
-  console.log(userList);
+  // console.log(userList);
 
   return (
     <>

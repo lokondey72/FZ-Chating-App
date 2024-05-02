@@ -16,7 +16,7 @@ const HomeHeader = () => {
           <div className="flex ml-14 items-center ">
             <input
               type="text"
-              class="bg-white text-[#646464] w-60 transition-all px-4 py-3 rounded-s-3xl"
+              className="bg-white text-[#646464] w-60 transition-all px-4 py-3 rounded-s-3xl"
               placeholder="Search"
             />
             <button>
