@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaHome, FaUser } from "react-icons/fa";
+import { FaHome, FaUser, FaRegAddressCard } from "react-icons/fa";
 import { IoChatboxEllipses, IoPeople, IoSettings } from "react-icons/io5";
 import { RiGroup2Fill } from "react-icons/ri";
 import { useSelector } from "react-redux";
@@ -74,6 +74,14 @@ const Navbar = () => {
               <p className="text-lg flex items-center gap-3 py-5 px-10">
                 <IoPeople />
                 People
+              </p>
+            </Link>
+          </li>
+          <li className="text-slate-50 rounded-xl">
+            <Link to="/friendrequest">
+              <p className="text-lg flex items-center gap-3 py-5 px-10">
+                <FaRegAddressCard />
+                Friend Requests
               </p>
             </Link>
           </li>

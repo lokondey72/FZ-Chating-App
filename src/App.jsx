@@ -14,6 +14,7 @@ import Groups from "./pages/Groups";
 import Friends from "./pages/Friends";
 import Game from "./pages/Game";
 import People from "./pages/People";
+import FriendRequests from "./pages/FriendRequests";
 
 function App() {
   const router = createBrowserRouter(
@@ -29,6 +30,7 @@ function App() {
           <Route path="/group" element={<Groups />}></Route>
           <Route path="/friends" element={<Friends />}></Route>
           <Route path="/people" element={<People />}></Route>
+          <Route path="/friendrequest" element={<FriendRequests />}></Route>
         </Route>
       </Route>
     )

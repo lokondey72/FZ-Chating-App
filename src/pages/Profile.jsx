@@ -1,5 +1,10 @@
 import { MdOutlineCancel } from "react-icons/md";
-import { FaEllipsisH, FaCamera, FaRegEdit } from "react-icons/fa";
+import {
+  FaEllipsisH,
+  FaCamera,
+  FaRegEdit,
+  FaCheckCircle,
+} from "react-icons/fa";
 import ProfileItems from "./ProfileItems";
 import HomeHeader from "./HomeHeader";
 import { useSelector } from "react-redux";
@@ -19,11 +24,13 @@ const Profile = () => {
   const auth = getAuth();
   const db = getDatabase();
   const storage = getStorage();
+  const cropperRef = createRef();
   const user = useSelector((state) => state.userSlice.user);
   const [image, setImage] = useState();
   const [cropData, setCropData] = useState("");
   const [upProfilePic, SetUpProfilePic] = useState(false);
-  const cropperRef = createRef();
+  const [editName, setEditName] = useState(false);
+  const [fullName, setFullName] = useState("");
 
   const onChange = (e) => {
     let files;
@@ -52,16 +59,14 @@ const Profile = () => {
   };
 
   const heandelUpload = () => {
-    console.log("click");
     const storageRef = ref(storage, user?.uid);
     // console.log(cropData);
     uploadString(storageRef, cropData, "data_url").then((snapshot) => {
       getDownloadURL(storageRef).then((downloadURL) => {
-        // console.log("File available at", downloadURL);
         // onAuthStateChanged(auth, () => {
         // });
-        console.log(downloadURL)
-        console.log(auth.currentUser);
+        // console.log(downloadURL)
+        // console.log(auth.currentUser);
         updateProfile(auth.currentUser, {
           profile_picture: downloadURL,
         }).then(() => {
@@ -72,6 +77,19 @@ const Profile = () => {
           console.log(downloadURL);
         });
       });
+    });
+  };
+
+  const handelNameEdit = () => {
+    setEditName(!editName);
+  };
+
+  const handelNameSave = () => {
+    onAuthStateChanged(auth, () => {
+      updateProfile(auth.currentUser, {
+        username: fullName,
+      });
+      console.log("click");
     });
   };
 
@@ -115,7 +133,7 @@ const Profile = () => {
                       <img src={cropData} alt="" className="w-full h-full" />
                     </div>
                   )}
-                  <div className="text-center">
+                  <div className="text-center my-5">
                     <label
                       htmlFor="profile"
                       className="cursor-pointer text-white border px-5 py-3 rounded-xl"
@@ -162,37 +180,57 @@ const Profile = () => {
                       >
                         Preview
                       </button>
-                      // <button className="text-white bg-secandari rounded-xl py-2 px-6">
-                      //   Crop Profile
-                      // </button>
                     )}
                   </div>
                 </div>
               </div>
             )}
 
-            <div className="flex items-center gap-2 pt-20">
+            <div className="flex items-center gap-1 pt-20">
               <h5 className="mb-1 text-2xl font-bold text-gray-900">
                 {user?.displayName}
               </h5>
-              <span>Nickname</span>
+              <button onClick={handelNameEdit} className="p-2">
+                <FaRegEdit />
+              </button>
+              <p>Nickname</p>
             </div>
-            <span className="text-sm text-gray-500 dark:text-gray-400">
-              Visual Designer
-            </span>
+            {editName && (
+              <div className="flex border border-black rounded-xl overflow-hidden items-center">
+                <input
+                  onChange={(e) => setFullName(e.target.value)}
+                  type="text"
+                  className="outline-none px-2 py-1"
+                  placeholder="Full name"
+                />
+                {fullName && (
+                  <button
+                    onClick={handelNameSave}
+                    className="px-1 text-green-500"
+                  >
+                    <FaCheckCircle />
+                  </button>
+                )}
+              </div>
+            )}
+            <div>
+              <span className="text-sm text-gray-500 dark:text-gray-400">
+                Visual Designer
+              </span>
+              <button className="p-2">
+                <FaRegEdit />
+              </button>
+            </div>
             <div className="flex mt-4 md:mt-6">
-              <a
+              <button
                 href="#"
                 className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
                 Add friend
-              </a>
-              <a
-                href="#"
-                className="py-2 px-4 ms-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-              >
+              </button>
+              <button className="py-2 px-4 ms-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
                 Message
-              </a>
+              </button>
             </div>
           </div>
         </div>

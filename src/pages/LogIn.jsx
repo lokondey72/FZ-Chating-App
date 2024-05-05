@@ -15,10 +15,10 @@ import { getDatabase, ref, set } from "firebase/database";
 import { logeduser } from "../Slices/userSlice";
 
 const LogIn = () => {
+  const auth = getAuth();
+  const db = getDatabase();
   const disptch = useDispatch();
   const navigate = useNavigate();
-  const db = getDatabase();
-  const auth = getAuth();
   let [loginData, setLoginData] = useState({
     email: "",
     password: "",
@@ -43,12 +43,12 @@ const LogIn = () => {
               theme: "light",
             });
           } else {
+            console.log(res.user.uid);
             set(ref(db, "users/" + res.user.uid), {
               username: res.user.displayName,
               email: res.user.email,
               profile_picture: res.user.photoURL,
             }).then(() => {
-              console.log(res);
               toast.success("Login successfull...", {
                 position: "top-center",
                 autoClose: 3000,
@@ -86,7 +86,6 @@ const LogIn = () => {
   };
   const provider = new GoogleAuthProvider();
   const hendelgoogle = () => {
-    console.log("click");
     signInWithPopup(auth, provider)
       .then((res) => {
         GoogleAuthProvider.credentialFromResult(res);
@@ -95,7 +94,6 @@ const LogIn = () => {
           email: res.user.email,
           profile_picture: res.user.photoURL,
         }).then(() => {
-          console.log(res);
           toast.success("Login successfull...", {
             position: "top-center",
             autoClose: 3000,
@@ -110,7 +108,7 @@ const LogIn = () => {
         });
       })
       .catch((error) => {
-        // console.log(errorMessage);
+        console.log(errorMessage);
         const errorMessage = error.message;
       });
   };
@@ -146,7 +144,7 @@ const LogIn = () => {
                         setEmailError("");
                     }}
                     type="email"
-                    className="w-full border box-border px-[15px] py-3 rounded-3xl border-solid border-[#c0c0c0]"
+                    className="w-full border box-border outline-none px-[15px] py-3 rounded-3xl border-solid border-[#c0c0c0]"
                     placeholder="Email Addres"
                   />
                   {emailError && (
@@ -163,7 +161,7 @@ const LogIn = () => {
                         setPasswordError("");
                     }}
                     type={showPass ? "text" : "password"}
-                    className="w-full border-none px-[15px] py-3 rounded-3xl"
+                    className="w-full outline-none border-none px-[15px] py-3 rounded-3xl"
                     placeholder="Password"
                   />
                   <button
