@@ -47,7 +47,7 @@ const LogIn = () => {
             set(ref(db, "users/" + res.user.uid), {
               username: res.user.displayName,
               email: res.user.email,
-              profile_picture: res.user.photoURL,
+              photoURL: res.user.photoURL,
             }).then(() => {
               toast.success("Login successfull...", {
                 position: "top-center",
@@ -92,7 +92,7 @@ const LogIn = () => {
         set(ref(db, "users/" + res.user.uid), {
           username: res.user.displayName,
           email: res.user.email,
-          profile_picture: res.user.photoURL,
+          photoURL: res.user.photoURL,
         }).then(() => {
           toast.success("Login successfull...", {
             position: "top-center",

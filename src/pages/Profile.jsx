@@ -63,19 +63,22 @@ const Profile = () => {
     // console.log(cropData);
     uploadString(storageRef, cropData, "data_url").then((snapshot) => {
       getDownloadURL(storageRef).then((downloadURL) => {
-        // onAuthStateChanged(auth, () => {
-        // });
+        onAuthStateChanged(auth, () => {
+          console.log(auth.currentUser);
+          console.log(downloadURL);
+          updateProfile(auth.currentUser, {
+            photoURL: downloadURL,
+            username: "hllo",
+          }).then((rs) => {
+            SetUpProfilePic(false);
+            setCropData("");
+            setImage("");
+            console.log(rs);
+          });
+        });
         // console.log(downloadURL)
         // console.log(auth.currentUser);
-        updateProfile(auth.currentUser, {
-          profile_picture: downloadURL,
-        }).then(() => {
-          SetUpProfilePic(false);
-          setCropData("");
-          setImage("");
-          console.log("Uploaded");
-          console.log(downloadURL);
-        });
+        
       });
     });
   };
