@@ -7,8 +7,8 @@ import { useSelector } from "react-redux";
 
 const FriendRequests = () => {
   const db = getDatabase();
-  // const [userList, setUserList] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [userList, setUserList] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [requestList, setRequestList] = useState([]);
   const user = useSelector((state) => state.userSlice.user);
 
@@ -26,20 +26,16 @@ const FriendRequests = () => {
     });
   }, []);
 
-  // useEffect(() => {
-  //   const starCountRef = ref(db, "users/");
-  //   let arr = [];
-  //   onValue(starCountRef, (snapshot) => {
-  //     snapshot.forEach((item) => {
-  //       requestList.map((requId) => {
-  //         if (item.key !== requId.senderId) {
-  //           arr.push({ ...item.val(), key: item.key });
-  //         }
-  //       });
-  //       setUserList(arr);
-  //     });
-  //   });
-  // }, []);
+  useEffect(() => {
+    const starCountRef = ref(db, "users/");
+    let arr = [];
+    onValue(starCountRef, (snapshot) => {
+      snapshot.forEach((item) => {
+        arr.push({ ...item.val(), key: item.key });
+        setUserList(arr);
+      });
+    });
+  }, []);
 
   return (
     <>
@@ -67,9 +63,18 @@ const FriendRequests = () => {
           {loading ? (
             <p>Loading Data...</p>
           ) : (
-            requestList.map((item) => (
-              <Requests key={item?.key} requList={item} />
-            ))
+            requestList.map((requId) =>
+              userList.map(
+                (item) =>
+                  requId.senderId == item.key && (
+                    <Requests
+                      key={item?.key}
+                      requList={item}
+                      frRequId={requId?.key}
+                    />
+                  )
+              )
+            )
           )}
         </div>
       </div>

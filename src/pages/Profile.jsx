@@ -5,13 +5,14 @@ import {
   FaRegEdit,
   FaCheckCircle,
 } from "react-icons/fa";
-import ProfileItems from "./ProfileItems";
-import HomeHeader from "./HomeHeader";
-import { useSelector } from "react-redux";
 import Cropper from "react-cropper";
 import "cropperjs/dist/cropper.css";
+import HomeHeader from "./HomeHeader";
+import ProfileItems from "./ProfileItems";
+import { useDispatch, useSelector } from "react-redux";
 import { createRef, useState } from "react";
-import { getDatabase } from "firebase/database";
+// import { getDatabase } from "firebase/database";
+import { getDatabase, ref as dref, set } from "firebase/database";
 import { getAuth, onAuthStateChanged, updateProfile } from "firebase/auth";
 import {
   getStorage,
@@ -19,18 +20,21 @@ import {
   uploadString,
   getDownloadURL,
 } from "firebase/storage";
+import { logeduser } from "../Slices/userSlice";
 
 const Profile = () => {
   const auth = getAuth();
   const db = getDatabase();
   const storage = getStorage();
+  const disptch = useDispatch();
   const cropperRef = createRef();
-  const user = useSelector((state) => state.userSlice.user);
   const [image, setImage] = useState();
   const [cropData, setCropData] = useState("");
-  const [upProfilePic, SetUpProfilePic] = useState(false);
-  const [editName, setEditName] = useState(false);
   const [fullName, setFullName] = useState("");
+  const [editName, setEditName] = useState(false);
+  const [loadingData, setLoadingData] = useState(false);
+  const [upProfilePic, SetUpProfilePic] = useState(false);
+  const user = useSelector((state) => state.userSlice.user);
 
   const onChange = (e) => {
     let files;
@@ -59,26 +63,33 @@ const Profile = () => {
   };
 
   const heandelUpload = () => {
+    setLoadingData(true)
     const storageRef = ref(storage, user?.uid);
-    // console.log(cropData);
-    uploadString(storageRef, cropData, "data_url").then((snapshot) => {
+    uploadString(storageRef, cropData, "data_url").then(() => {
       getDownloadURL(storageRef).then((downloadURL) => {
-        onAuthStateChanged(auth, () => {
-          console.log(auth.currentUser);
-          console.log(downloadURL);
+        onAuthStateChanged(auth, (res) => {
+          // console.log(res);
+          // console.log(downloadURL);
           updateProfile(auth.currentUser, {
             photoURL: downloadURL,
-            username: "hllo",
-          }).then((rs) => {
+            // username: "hllo",
+          }).then(() => {
+            set(dref(db, "users/" + user.uid), {
+              username: user.displayName,
+              email: user.email,
+              photoURL: downloadURL,
+            });
+            localStorage.setItem("user", JSON.stringify(auth.currentUser));
+            disptch(logeduser(auth.currentUser));
             SetUpProfilePic(false);
             setCropData("");
             setImage("");
-            console.log(rs);
+            setLoadingData(false);
+            // console.log(photoURL);
           });
         });
         // console.log(downloadURL)
         // console.log(auth.currentUser);
-        
       });
     });
   };
@@ -92,7 +103,7 @@ const Profile = () => {
       updateProfile(auth.currentUser, {
         username: fullName,
       });
-      console.log("click");
+      // console.log("click");
     });
   };
 
@@ -109,8 +120,8 @@ const Profile = () => {
           <div className="flex flex-col items-center pb-10">
             <div className="w-32 h-32 mb-3 overflow-hidden absolute top-80 rounded-full shadow-lg">
               <img
-                src={cropData ? cropData : user?.photoURL}
-                alt="Bonnie image"
+                src={user?.photoURL}
+                alt="Profile Photo"
                 className="w-full h-full"
               />
             </div>
@@ -118,7 +129,7 @@ const Profile = () => {
               onClick={() => SetUpProfilePic(true)}
               className="px-1 cursor-pointer absolute left bg-red-500"
             >
-              <button className=" text-white">
+              <button className="text-white">
                 <FaCamera />
               </button>
             </div>
@@ -170,12 +181,22 @@ const Profile = () => {
                   )}
                   <div className="flex justify-center mx-5 my-3">
                     {cropData ? (
-                      <button
-                        onClick={heandelUpload}
-                        className="text-white bg-green-500 rounded-xl py-2 px-6"
-                      >
-                        Upload Profile
-                      </button>
+                      loadingData ? (
+                        <button className="text-white bg-green-500 rounded-xl py-2 px-6">
+                          <div class="flex flex-row gap-2">
+                            <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
+                            <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.3s]"></div>
+                            <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
+                          </div>
+                        </button>
+                      ) : (
+                        <button
+                          onClick={heandelUpload}
+                          className="text-white bg-green-500 rounded-xl py-2 px-6"
+                        >
+                          Upload Profile
+                        </button>
+                      )
                     ) : (
                       <button
                         onClick={getCropData}
@@ -216,10 +237,10 @@ const Profile = () => {
                 )}
               </div>
             )}
-            <div>
-              <span className="text-sm text-gray-500 dark:text-gray-400">
+            <div className="flex items-center gap-1">
+              <p className="text-sm text-gray-500 dark:text-gray-400">
                 Visual Designer
-              </span>
+              </p>
               <button className="p-2">
                 <FaRegEdit />
               </button>
@@ -241,7 +262,7 @@ const Profile = () => {
         <div className="w-full my-10">
           <div className="flex justify-center flex-wrap gap-10">
             <ProfileItems
-              imgUrl="/public/profile-bg-img.jpg"
+             profilePost={user.photoURL}
               profPera="With a passion for design and video editing that spans over 5 years, I'm here to bring your creative visions to life. As an experienced designer and video editor, I offer a wide range of services that will elevate your content to the next level.
 
               What sets me apart:
@@ -251,21 +272,7 @@ const Profile = () => {
               ✅ Competitive pricing and custom packages."
             />
             <ProfileItems
-              imgUrl="/public/WhatsApp-img.jpg"
-              profPera="Here are the biggest enterprise technology acquisitions of 2021 so
-            far, in reverse chronological order Here are the biggest enterprise technology acquisitions of 2021 so
-            far, in reverse chronological order Here are the biggest enterprise technology acquisitions of 2021 so
-            far, in reverse chronological order."
-            />
-            <ProfileItems
-              imgUrl="/public/friends-img.jpg"
-              profPera="Here are the biggest enterprise technology acquisitions of 2021 so
-            far, in reverse chronological order Here are the biggest enterprise technology acquisitions of 2021 so
-            far, in reverse chronological order Here are the biggest enterprise technology acquisitions of 2021 so
-            far, in reverse chronological order."
-            />
-            <ProfileItems
-              imgUrl="/public/uploded-you-img.jpg"
+              profilePost={user.photoURL}
               profPera="Here are the biggest enterprise technology acquisitions of 2021 so
             far, in reverse chronological order Here are the biggest enterprise technology acquisitions of 2021 so
             far, in reverse chronological order Here are the biggest enterprise technology acquisitions of 2021 so
