@@ -7,7 +7,7 @@ const Groups = () => {
     <>
       <div className="bg-[#FCFCFC] overflow-y-scroll overflow-x-hidden ml-64 w-1/4 h-screen">
         <div>
-          <div className="w-[465px] pb-4 shadow-Uxl bg-white fixed top-0">
+          <div className="w-[465px] pb-4 bg-white fixed top-0">
             <div className="flex justify-between items-center mx-7 my-5 text-lg font-semibold text-primary">
               <h2 className="title">
                 <Link to="/chat">Group</Link>

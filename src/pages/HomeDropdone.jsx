@@ -5,9 +5,14 @@ import { Link } from "react-router-dom";
 
 const HomeDropdone = () => {
   const [open, setOpen] = useState("");
+  const [logOut, setLogOut] = useState(false)
   const hendelclik = () => {
     setOpen(!open);
   };
+const hendelLogout = () =>{
+  setLogOut(localStorage.setItem("user", JSON.stringify("")))
+}
+
   return (
     <>
       <div className="relative inline-block text-left">
@@ -28,7 +33,7 @@ const HomeDropdone = () => {
                 <IoPersonCircle />
               </li>
               <li>
-                <a
+                <Link
                   href="#"
                   className="text-gray-700 block px-4 py-2 text-sm"
                   role="menuitem"
@@ -36,22 +41,22 @@ const HomeDropdone = () => {
                   id="menu-item-0"
                 >
                   Account settings
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-700 block px-4 py-2 text-sm"
-                  role="menuitem"
-                  tabindex="-1"
-                  id="menu-item-0"
-                >
-                  Account settings
-                </a>
+                </Link>
               </li>
               <li>
                 <Link
-                  onClick={localStorage.setItem("user", JSON.stringify(""))}
+                  href="#"
+                  className="text-gray-700 block px-4 py-2 text-sm"
+                  role="menuitem"
+                  tabindex="-1"
+                  id="menu-item-0"
+                >
+                  Account settings
+                </Link>
+              </li>
+              <li>
+                <Link
+                  onClick={()=>hendelLogout(logOut)}
                   to="/login"
                   className="text-gray-700 block px-4 py-2 text-sm"
                   role="menuitem"

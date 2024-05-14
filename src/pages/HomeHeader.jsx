@@ -7,6 +7,7 @@ import {
 } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import HomeDropdone from "./HomeDropdone";
+import { GoBlocked } from "react-icons/go";
 
 const HomeHeader = () => {
   return (
@@ -30,13 +31,18 @@ const HomeHeader = () => {
               </Link>
             </div>
             <div className="flex w-full justify-center gap-x-1.5 rounded-xl px-2 py-2 text-sm font-semibold text-gray-900 shadow-sm hover:text-white hover:bg-gray-800">
-              <Link>
+              <Link to="/people">
+                <IoPeople className="flex gap-5 text-4xl" />
+              </Link>
+            </div>
+            <div className="flex w-full justify-center gap-x-1.5 rounded-xl px-2 py-2 text-sm font-semibold text-gray-900 shadow-sm hover:text-white hover:bg-gray-800">
+              <Link to="/group">
                 <RiGroup2Fill className="flex gap-5 text-4xl" />
               </Link>
             </div>
             <div className="flex w-full justify-center gap-x-1.5 rounded-xl px-2 py-2 text-sm font-semibold text-gray-900 shadow-sm hover:text-white hover:bg-gray-800">
-              <Link>
-                <IoPeople className="flex gap-5 text-4xl" />
+              <Link to="/blocklist">
+                <GoBlocked className="flex gap-5 text-4xl" />
               </Link>
             </div>
             <div className="flex w-full justify-center gap-x-1.5 rounded-xl px-2 py-2 text-sm font-semibold text-gray-900 shadow-sm hover:text-white hover:bg-gray-800">

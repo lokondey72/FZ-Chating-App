@@ -41,7 +41,7 @@ const FriendRequests = () => {
     <>
       <div className="bg-[#FCFCFC] overflow-y-scroll overflow-x-hidden ml-64 w-1/4 h-screen">
         <div className="w-full">
-          <div className="xl:w-[465px] pb-4 shadow-Uxl bg-white fixed top-0">
+          <div className="xl:w-[465px] pb-4 bg-white fixed top-0">
             <div className="flex justify-between items-center mx-7 my-5 text-lg font-semibold text-primary">
               <h2 className="title">
                 <Link to="/friendrequest">Friend Requests</Link>
@@ -62,7 +62,7 @@ const FriendRequests = () => {
         <div className="mx-7 mt-40">
           {loading ? (
             <p>Loading Data...</p>
-          ) : (
+          ) : requestList.length > 0 ? (
             requestList.map((requId) =>
               userList.map(
                 (item) =>
@@ -70,11 +70,13 @@ const FriendRequests = () => {
                     <Requests
                       key={item?.key}
                       requList={item}
-                      frRequId={requId?.key}
+                      frRequId={requId.key}
                     />
                   )
               )
             )
+          ) : (
+            <p className="text-center font-bold">No Friend Request Available</p>
           )}
         </div>
       </div>

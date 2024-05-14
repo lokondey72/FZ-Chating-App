@@ -29,9 +29,9 @@ const People = () => {
 
   return (
     <>
-      <div className="bg-[#FCFCFC] overflow-y-scroll overflow-x-hidden ml-64 w-1/4 h-screen">
-        <div>
-          <div className="w-[465px] pb-4 shadow-Uxl bg-white fixed top-0">
+      <div className="w-full bg-white overflow-y-scroll overflow-x-hidden ml-64 h-screen">
+        <div className="w-1/2 m-auto">
+          <div className="w-[740px] pb-4 bg-white fixed top-0">
             <div className="flex justify-between items-center mx-7 my-5 text-lg font-semibold text-primary">
               <h2 className="title">
                 <Link to="/chat">People</Link>
@@ -57,11 +57,6 @@ const People = () => {
               ))
             )}
           </div>
-        </div>
-      </div>
-      <div className="flex justify-center items-center m-auto">
-        <div className="w-60 text-center text-xl font-semibold interFont">
-          <h2>People you may know ther</h2>
         </div>
       </div>
     </>
