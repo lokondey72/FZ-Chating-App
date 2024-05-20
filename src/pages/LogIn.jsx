@@ -122,7 +122,7 @@ const LogIn = () => {
             <div className="w-[560px] bg-white shadow-[#00000059_0px_5px_15px] box-border mx-auto my-16 py-10 rounded-3xl">
               <div className="w-24 text-center m-auto pb-2">
                 <img
-                  src="/public/FZ-app-login-logo.png"
+                  src="/FZ-app-login-logo.png"
                   alt="FZ-app-login-logo"
                 />
               </div>
