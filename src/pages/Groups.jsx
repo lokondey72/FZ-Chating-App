@@ -1,10 +1,43 @@
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaEdit, FaWindowClose } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import GroupsItems from "./GroupsItems";
+import { useState } from "react";
 
 const Groups = () => {
+  let [show, setShow] = useState(false);
+
   return (
     <>
+      {show && (
+        <div className="w-full h-screen flex items-center justify-center absolute z-20 bg-[rgb(0,0,0,0.5)]">
+          <div className="bg-white rounded-xl">
+            <div className="text-end">
+              <button
+                onClick={() => setShow(false)}
+                className="p-4 text-xl rounded-full overflow-hidden"
+              >
+                <FaWindowClose />
+              </button>
+            </div>
+            <div className="flex flex-col items-center justify-center mx-14 mt-5 mb-20 gap-5">
+              <h4 className="text-3xl font-bold mb-3 font-nunitoFont">Create New Group</h4>
+              <div className="flex items-center gap-3">
+                <p className="text-lg font-semibold font-nunitoFont">Group name:</p>
+                <input
+                  className="border border-black rounded-lg px-5 py-1"
+                  type="text"
+                  placeholder="Name"
+                />
+              </div>
+              <div>
+                <button className="py-3 px-4 rounded-xl text-lg font-semibold bg-brand text-white">
+                  Create group
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="bg-[#FCFCFC] overflow-y-scroll overflow-x-hidden ml-64 w-1/4 h-screen">
         <div>
           <div className="w-[465px] pb-4 bg-white fixed top-0">
@@ -12,6 +45,11 @@ const Groups = () => {
               <h2 className="title">
                 <Link to="/chat">Group</Link>
               </h2>
+              <div>
+                <button onClick={() => setShow(true)} className="p-2">
+                  <FaEdit />
+                </button>
+              </div>
             </div>
             <div className="flex items-center border-black border rounded-lg justify-center mx-5">
               <div className="p-[14px] rounded-l-lg bg-slate-300">

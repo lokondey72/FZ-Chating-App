@@ -14,7 +14,7 @@ const Navbar = () => {
           <Link to="/">
             <div className="flex w-20 mb-10 text-center">
               <img
-                src="/public/FZ-app-login-logo.png"
+                src="/FZ-app-login-logo.png"
                 alt="FZ-app-login-logo"
               />
               <h3 className="text-xl font-bold uppercase">Friends Zone</h3>
@@ -55,13 +55,14 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="text-slate-50 rounded-xl">
-            <Link to="/blocklist">
+              <Link to="/group">
               <p className="text-lg flex items-center gap-3 py-5 px-10">
-                <GoBlocked />
-                Block
+                <RiGroup2Fill className="flex gap-5 text-4xl" />
+                <span>Group</span>
               </p>
-            </Link>
+              </Link>
           </li>
+          
           <li className="text-slate-50 rounded-xl">
             <Link to="/friends">
               <p className="text-lg flex items-center gap-3 py-5 px-10">
@@ -83,6 +84,14 @@ const Navbar = () => {
               <p className="text-lg flex items-center gap-3 py-5 px-10">
                 <FaRegAddressCard />
                 Friend Requests
+              </p>
+            </Link>
+          </li>
+          <li className="text-slate-50 rounded-xl">
+            <Link to="/blocklist">
+              <p className="text-lg flex items-center gap-3 py-5 px-10">
+                <GoBlocked />
+                Block
               </p>
             </Link>
           </li>

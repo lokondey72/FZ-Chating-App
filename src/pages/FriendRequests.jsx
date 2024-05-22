@@ -39,9 +39,9 @@ const FriendRequests = () => {
 
   return (
     <>
-      <div className="bg-[#FCFCFC] overflow-y-scroll overflow-x-hidden ml-64 w-1/4 h-screen">
-        <div className="w-full">
-          <div className="xl:w-[465px] pb-4 bg-white fixed top-0">
+      <div className="w-full bg-white overflow-y-scroll overflow-x-hidden ml-64 h-screen">
+        <div className="w-1/2 m-auto">
+          <div className="xl:w-[740px] sm:w-[465px] pb-4 bg-white fixed top-0">
             <div className="flex justify-between items-center mx-7 my-5 text-lg font-semibold text-primary">
               <h2 className="title">
                 <Link to="/friendrequest">Friend Requests</Link>
@@ -58,26 +58,28 @@ const FriendRequests = () => {
               />
             </div>
           </div>
-        </div>
-        <div className="mx-7 mt-40">
-          {loading ? (
-            <p>Loading Data...</p>
-          ) : requestList.length > 0 ? (
-            requestList.map((requId) =>
-              userList.map(
-                (item) =>
-                  requId.senderId == item.key && (
-                    <Requests
-                      key={item?.key}
-                      requList={item}
-                      frRequId={requId.key}
-                    />
-                  )
+          <div className="mx-7 mt-40">
+            {loading ? (
+              <p>Loading Data...</p>
+            ) : requestList.length > 0 ? (
+              requestList.map((requId) =>
+                userList.map(
+                  (item) =>
+                    requId.senderId == item.key && (
+                      <Requests
+                        key={item?.key}
+                        requList={item}
+                        frRequId={requId.key}
+                      />
+                    )
+                )
               )
-            )
-          ) : (
-            <p className="text-center font-bold">No Friend Request Available</p>
-          )}
+            ) : (
+              <p className="text-center font-bold">
+                No Friend Request Available
+              </p>
+            )}
+          </div>
         </div>
       </div>
     </>

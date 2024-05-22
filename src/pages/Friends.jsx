@@ -38,15 +38,15 @@ const Friends = () => {
 
   return (
     <>
-      <div className="bg-[#FCFCFC] overflow-y-scroll overflow-x-hidden ml-64 w-1/4 h-screen">
-        <div>
-          <div className="w-[465px] pb-4 bg-white fixed top-0">
+      <div className="bg-white overflow-y-scroll overflow-x-hidden ml-40 w-full h-screen">
+        <div className="w-1/2 m-auto">
+          <div className="w-[740px] pb-4 bg-white fixed top-0">
             <div className="flex justify-between items-center mx-7 my-5 text-lg font-semibold text-primary">
               <h2 className="title">
                 <Link to="/chat">Friends</Link>
               </h2>
             </div>
-            <div className="flex items-center border-black border rounded-lg justify-center mx-5">
+            <div className="w-full flex items-center border-black border rounded-lg justify-center mx-5">
               <div className="p-[14px] rounded-l-lg bg-slate-300">
                 <FaSearch />
               </div>
@@ -66,11 +66,6 @@ const Friends = () => {
               <p className="text-center font-bold">No Friends Available</p>
             )}
           </div>
-        </div>
-      </div>
-      <div className="flex justify-center items-center m-auto">
-        <div className="w-60 text-center text-xl font-semibold interFont">
-          <h2>Select your friend and see friends info</h2>
         </div>
       </div>
     </>
