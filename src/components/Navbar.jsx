@@ -8,24 +8,21 @@ import { GoBlocked } from "react-icons/go";
 const Navbar = () => {
   const user = useSelector((state) => state.userSlice.user);
   return (
-    <nav>
+    <div>
       <div className="w-64 h-screen fixed z-20 sm:overflow-y-scroll sm:overflow-x-hidden 2xl:overflow-y-hidden 2xl:overflow-x-hidden  pt-10 bg-slate-400">
         <div className="ml-6 inline-block">
           <Link to="/">
             <div className="flex w-20 mb-10 text-center">
-              <img
-                src="/FZ-app-login-logo.png"
-                alt="FZ-app-login-logo"
-              />
+              <img src="/FZ-app-login-logo.png" alt="FZ-app-login-logo" />
               <h3 className="text-xl font-bold uppercase">Friends Zone</h3>
             </div>
           </Link>
         </div>
         <button>
           <Link to="/profile">
-            <div className="flex items-center gap-2 p-2 mx-4 mb-10">
+            <button className="flex items-center gap-2 p-2 mx-4 mb-10">
               <div className="w-14 h-14 rounded-full overflow-hidden">
-                <img src={user?.photoURL} alt="" />
+                <img src={user?.photoURL} alt="NavProfile" />
               </div>
               <div className="mr-2">
                 <h2 className="text-xl font-semibold">{user?.displayName}</h2>
@@ -34,65 +31,65 @@ const Navbar = () => {
               <div className="text-xl text-slate-50 font-semibold">
                 <IoSettings />
               </div>
-            </div>
+            </button>
           </Link>
         </button>
         <ul className="flex flex-col gap-5 items-center">
           <li className="bg-brand text-slate-50 rounded-xl">
             <Link to="/">
-              <p className="text-lg flex items-center gap-3 py-5 px-10">
+              <button className="text-lg flex items-center gap-3 py-5 px-10">
                 <FaHome />
                 <span>Home</span>
-              </p>
+              </button>
             </Link>
           </li>
           <li className="text-slate-50 rounded-xl">
             <Link to="/chat">
-              <p className="text-lg flex items-center gap-3 py-5 px-10">
+              <button className="text-lg flex items-center gap-3 py-5 px-10">
                 <IoChatboxEllipses />
                 <span>Chat</span>
-              </p>
+              </button>
             </Link>
           </li>
           <li className="text-slate-50 rounded-xl">
-              <Link to="/group">
-              <p className="text-lg flex items-center gap-3 py-5 px-10">
+            <Link to="/group">
+              <button className="text-lg flex items-center gap-3 py-5 px-10">
                 <RiGroup2Fill className="flex gap-5 text-4xl" />
                 <span>Group</span>
-              </p>
-              </Link>
+              </button>
+            </Link>
           </li>
-          
+
           <li className="text-slate-50 rounded-xl">
             <Link to="/friends">
-              <p className="text-lg flex items-center gap-3 py-5 px-10">
+              <button className="text-lg flex items-center gap-3 py-5 px-10">
                 <FaUser />
                 Friends
-              </p>
+              </button>
             </Link>
           </li>
           <li className="text-slate-50 rounded-xl">
             <Link to="/people">
-              <p className="text-lg flex items-center gap-3 py-5 px-10">
+              <button className="text-lg flex items-center gap-3 py-5 px-10">
                 <IoPeople />
                 People
-              </p>
+              </button>
             </Link>
           </li>
           <li className="text-slate-50 rounded-xl">
             <Link to="/friendrequest">
-              <p className="text-lg flex items-center gap-3 py-5 px-10">
+              <button className="text-lg flex items-center gap-3 py-5 px-10">
                 <FaRegAddressCard />
                 Friend Requests
-              </p>
+              </button>
             </Link>
           </li>
           <li className="text-slate-50 rounded-xl">
             <Link to="/blocklist">
-              <p className="text-lg flex items-center gap-3 py-5 px-10">
+              <button className="text-lg flex items-center gap-3 py-5 px-10">
                 <GoBlocked />
                 Block
-              </p>
+              </button>
             </Link>
           </li>
         </ul>
@@ -110,7 +107,7 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-    </nav>
+    </div>
   );
 };
 

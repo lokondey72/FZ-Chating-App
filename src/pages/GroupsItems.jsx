@@ -1,13 +1,15 @@
-const GroupsItems = ({ imgUrl, idName, msg }) => {
+const GroupsItems = ({ data }) => {
   return (
     <>
       <div className="flex cursor-pointer items-center my-5 gap-5">
         <div className="w-14 h-14 rounded-full overflow-hidden">
-          <img src={imgUrl} alt="rikto-ltd-imgs" />
+          <img src={data?.createByPhoto} alt="rikto-ltd-imgs" />
         </div>
         <div>
-          <h2 className="text-xl font-bold text-primary">{idName}</h2>
-          <p className="text-lg font-normal text-secandari">{msg}</p>
+          <h2 className="text-xl font-bold text-primary">{data?.groupName}</h2>
+          <p className="text-lg font-normal text-secandari">
+            Admin: {data?.createBy}
+          </p>
         </div>
         <div className="ml-auto">
           <p>Yesterday</p>

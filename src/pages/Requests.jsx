@@ -5,6 +5,7 @@ const Requests = ({ requList, frRequId }) => {
   // console.log(requList);
   const user = useSelector((state) => state.userSlice.user);
   const db = getDatabase();
+  
   const handelConfirm = (data, id) => {
     // console.log(id);
     set(push(ref(db, "friends/")), {
@@ -15,7 +16,6 @@ const Requests = ({ requList, frRequId }) => {
       reciverName: user.displayName,
       reciverProfile: user.photoURL,
     });
-
     remove(ref(db, "friendRequest/" + id));
     window.location.reload();
   };

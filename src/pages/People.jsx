@@ -50,7 +50,7 @@ const People = () => {
           </div>
           <div className="mx-7 mt-40">
             {loading ? (
-              <p>Loading Data...</p>
+              <p>Loading...</p>
             ) : (
               userList.map((item) => (
                 <PeopleItems userData={item} key={item?.key} />
