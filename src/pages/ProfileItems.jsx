@@ -3,10 +3,10 @@ import PostHeading from "./PostHeading";
 const ProfileItems = ({ profilePost, profPera }) => {
   return (
     <>
-      <div className="w-full relative mx-20">
-        <div className="w-full bg-white rounded-2xl overflow-hidden shadow ">
+      <div className="w-full relative sm:ml-56 xl:mx-72 mx-4">
+        <div className="xl:w-full sm:w-96 xl:ml-32 bg-white rounded-2xl overflow-hidden shadow ">
           <PostHeading />
-          <div className="w-full flex justify-center gap-2 h-[660px]">
+          <div className="w-full flex justify-center gap-2 xl:h-[660px]">
             <button>
               <img className=" h-full" src={profilePost} alt="profile-img" />
             </button>

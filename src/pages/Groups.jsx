@@ -5,12 +5,14 @@ import { Link } from "react-router-dom";
 import GroupsItems from "./GroupsItems";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import AnotherGroup from "./AnotherGroup";
 
 const Groups = () => {
   const db = getDatabase();
   let [show, setShow] = useState(false);
   const [loading, setLoading] = useState(true);
   let [groupList, setGroupList] = useState([]);
+  let [allGroupList, setAllGroupList] = useState([]);
   let [groupName, setGroupName] = useState("");
   // let [groupNameErr, setGroupNameErr] = useState("")
   const user = useSelector((state) => state.userSlice.user);
@@ -28,11 +30,11 @@ const Groups = () => {
         groupName: groupName,
         createBy: user.displayName,
         createById: user.uid,
-        createByPhoto: "/user-dufolt-img.png",
+        createByPhoto: "/Group-img.png",
       }).then(() => {
         setShow(false);
         setGroupName("");
-        window.location.reload()
+        window.location.reload();
       });
     }
   };
@@ -42,9 +44,23 @@ const Groups = () => {
     const starCountRef = ref(db, "group/");
     onValue(starCountRef, (snapshot) => {
       snapshot.forEach((item) => {
-        arr.push({ ...item.val(), key: item.key });
+        if (item.val().createById == user.uid) {
+          arr.push({ ...item.val(), key: item.key });
+        }
       });
       setGroupList(arr);
+      setLoading(false);
+    });
+  }, []);
+
+  useEffect(() => {
+    let arr = [];
+    const starCountRef = ref(db, "group/");
+    onValue(starCountRef, (snapshot) => {
+      snapshot.forEach((item) => {
+        arr.push({ ...item.val(), key: item.key });
+      });
+      setAllGroupList(arr);
       setLoading(false);
     });
   }, []);
@@ -92,9 +108,9 @@ const Groups = () => {
           </div>
         </div>
       )}
-      <div className="bg-white overflow-y-scroll overflow-x-hidden ml-64 w-full h-screen">
+      <div className="bg-white overflow-y-scroll overflow-x-hidden w-full h-screen">
         <div className="w-1/2 m-auto">
-          <div className="sm:w-[465px] xl:w-[740px] pb-4 bg-white fixed top-0">
+          <div className="sm:w-[465px] xl:w-5/12 ml-2 pb-4 bg-white fixed top-0">
             <div className="flex justify-between items-center mx-7 my-5 text-lg font-semibold text-primary">
               <h2 className="title">
                 <Link to="/chat">Group</Link>
@@ -116,12 +132,24 @@ const Groups = () => {
               />
             </div>
           </div>
-          <div className="mx-7 mt-40">
+          <div>
             {loading ? (
               <p>Loading...</p>
             ) : groupList.length > 0 ? (
               groupList.map((item) => (
-                <GroupsItems key={item.key} data={item} />
+                <GroupsItems key={item.key} data={item} myGroup={true} />
+              ))
+            ) : (
+              <p className="text-center font-bold">No Friends Available</p>
+            )}
+          </div>
+          <div className="mx-10 mt-20">
+            <p className="title">All Group</p>
+            {loading ? (
+              <p>Loading...</p>
+            ) : allGroupList.length > 0 ? (
+              allGroupList.map((item) => (
+                <AnotherGroup key={item.key} data={item} />
               ))
             ) : (
               <p className="text-center font-bold">No Friends Available</p>
@@ -129,11 +157,6 @@ const Groups = () => {
           </div>
         </div>
       </div>
-      {/* <div className="flex justify-center items-center m-auto">
-        <div className="w-60 text-center text-xl font-semibold interFont">
-          <h2>Select a chat or start a new conversation</h2>
-        </div>
-      </div> */}
     </>
   );
 };

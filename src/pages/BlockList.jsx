@@ -26,7 +26,7 @@ const BlockList = () => {
 
   return (
     <>
-      <div className="bg-white overflow-y-scroll overflow-x-hidden w-full ml-40 h-screen">
+      <div className="bg-white overflow-y-scroll overflow-x-hidden w-full h-screen">
         <div className="w-1/2 m-auto">
           <div className="w-[740px] pb-4 bg-white fixed top-0">
             <div className="flex items-center mx-7 mt-5 mb-6 text-lg font-semibold text-primary">

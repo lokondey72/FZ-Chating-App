@@ -4,10 +4,10 @@ import PostHeading from "./PostHeading";
 const HomeItems = ({ imgUrl, peragrap }) => {
   return (
     <>
-      <div className="w-2/3 relative ml-32">
-        <div className="w-full bg-white rounded-2xl overflow-hidden shadow ">
+      <div className="w-2/3 relative sm:ml-56 xl:ml-32">
+        <div className="xl:w-full sm:w-96 bg-white rounded-2xl overflow-hidden shadow ">
           <PostHeading />
-          <div className="w-full flex justify-center gap-2 h-[660px]">
+          <div className="w-full flex justify-center gap-2 xl:h-[660px]">
             <Link to="#">
               <img className=" h-full" src={imgUrl} alt="Home-img" />
             </Link>

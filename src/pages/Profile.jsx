@@ -63,7 +63,7 @@ const Profile = () => {
   };
 
   const heandelUpload = () => {
-    setLoadingData(true)
+    setLoadingData(true);
     const storageRef = ref(storage, user?.uid);
     uploadString(storageRef, cropData, "data_url").then(() => {
       getDownloadURL(storageRef).then((downloadURL) => {
@@ -109,29 +109,35 @@ const Profile = () => {
 
   return (
     <>
-      <HomeHeader />
-      <div className="w-full ml-64">
-        <div className="h-96 bg-profile-img bg-no-repeat bg-cover">
-          <div className="flex justify-end px-4 pt-4">
-            <FaEllipsisH />
+      {/* <HomeHeader /> */}
+      <div className="w-full">
+        <div className="">
+          <div className="w-full h-96">
+            <img
+              className="w-full h-full"
+              src="/profile-bg-img.jpg"
+              alt="profile-cover"
+            />
           </div>
         </div>
         <div className="border border-gray-200 rounded-lg shadow">
           <div className="flex flex-col items-center pb-10">
-            <div className="w-32 h-32 mb-3 overflow-hidden absolute top-80 rounded-full shadow-lg">
-              <img
-                src={user?.photoURL}
-                alt="Profile Photo"
-                className="w-full h-full"
-              />
-            </div>
-            <div
-              onClick={() => SetUpProfilePic(true)}
-              className="px-1 cursor-pointer absolute left bg-red-500"
-            >
-              <button className="text-white">
-                <FaCamera />
-              </button>
+            <div>
+              <div className="w-32 h-32 mb-3 overflow-hidden absolute top-[320px] sm:top-80 sm:left-[895px] xl:top-80 left-5 rounded-full shadow-lg">
+                <img
+                  src={user?.photoURL}
+                  alt="Profile Photo"
+                  className="w-full h-full"
+                />
+              </div>
+              <div
+                className="px-1 rounded-full bg-brand cursor-pointer absolute top-[435px] left-[71px] xl:top-[410px] xl:left-[950px] md:top-[410px] md:left-[385px] sm:top-[410px] sm:left-[385px]"
+                onClick={() => SetUpProfilePic(true)}
+              >
+                <button className="text-white">
+                  <FaCamera />
+                </button>
+              </div>
             </div>
             {upProfilePic && (
               <div className="w-full h-full z-10 bg-[rgb(0,0,0,0.6)] absolute top-0 left-0 flex justify-center items-center">
@@ -184,9 +190,9 @@ const Profile = () => {
                       loadingData ? (
                         <button className="text-white bg-green-500 rounded-xl py-2 px-6">
                           <div className="flex flex-row gap-2">
-                            <div className="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
-                            <div className="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.3s]"></div>
-                            <div className="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
+                            <div className="w-4 h-4 rounded-full bg-brand animate-bounce [animation-delay:.7s]"></div>
+                            <div className="w-4 h-4 rounded-full bg-brand animate-bounce [animation-delay:.3s]"></div>
+                            <div className="w-4 h-4 rounded-full bg-brand animate-bounce [animation-delay:.7s]"></div>
                           </div>
                         </button>
                       ) : (
@@ -210,7 +216,7 @@ const Profile = () => {
               </div>
             )}
 
-            <div className="flex items-center gap-1 pt-20">
+            <div className="flex items-center gap-1 pt-20 sm:ml-28">
               <h5 className="mb-1 text-2xl font-bold text-gray-900">
                 {user?.displayName}
               </h5>
@@ -220,7 +226,7 @@ const Profile = () => {
               <p>Nickname</p>
             </div>
             {editName && (
-              <div className="flex border border-black rounded-xl overflow-hidden items-center">
+              <div className="flex border border-black rounded-xl overflow-hidden items-center ml-28">
                 <input
                   onChange={(e) => setFullName(e.target.value)}
                   type="text"
@@ -238,17 +244,15 @@ const Profile = () => {
               </div>
             )}
             <div className="flex items-center gap-1">
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <p className="text-sm ml-28 text-gray-500 dark:text-gray-400">
                 Visual Designer
               </p>
               <button className="p-2">
                 <FaRegEdit />
               </button>
             </div>
-            <div className="flex mt-4 md:mt-6">
-              <button
-                className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
+            <div className="flex ml-28 mt-4 md:mt-6">
+              <button className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 Add friend
               </button>
               <button className="py-2 px-4 ms-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
@@ -261,7 +265,7 @@ const Profile = () => {
         <div className="w-full my-10">
           <div className="flex justify-center flex-wrap gap-10">
             <ProfileItems
-             profilePost={user.photoURL}
+              profilePost={user.photoURL}
               profPera="With a passion for design and video editing that spans over 5 years, I'm here to bring your creative visions to life. As an experienced designer and video editor, I offer a wide range of services that will elevate your content to the next level.
 
               What sets me apart:

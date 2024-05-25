@@ -5,7 +5,7 @@ import ChatItems from "./ChatItems";
 const chat = () => {
   return (
     <>
-      <div className="bg-[#FCFCFC] overflow-y-scroll overflow-x-hidden ml-64 w-1/4 h-screen">
+      <div className="bg-white overflow-y-scroll overflow-x-hidden ml-64 w-1/4 h-screen">
         <div>
           <div className="w-[465px] pb-4 bg-white fixed top-0">
             <div className="flex items-center mx-7 mt-5 mb-6 text-lg font-semibold text-primary">

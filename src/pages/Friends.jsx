@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import FriendsItems from "./FriendsItems";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getDatabase, onValue, push, ref, set } from "firebase/database";
+import { getDatabase, onValue, ref } from "firebase/database";
 
 const Friends = () => {
   const db = getDatabase();
@@ -38,7 +38,7 @@ const Friends = () => {
 
   return (
     <>
-      <div className="bg-white overflow-y-scroll overflow-x-hidden ml-40 w-full h-screen">
+      <div className="bg-white overflow-y-scroll overflow-x-hidden w-full h-screen">
         <div className="w-1/2 m-auto">
           <div className="w-[740px] pb-4 bg-white fixed top-0">
             <div className="flex justify-between items-center mx-7 my-5 text-lg font-semibold text-primary">
