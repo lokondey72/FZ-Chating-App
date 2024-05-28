@@ -101,7 +101,7 @@ const Profile = () => {
   const handelNameSave = () => {
     onAuthStateChanged(auth, () => {
       updateProfile(auth.currentUser, {
-        username: fullName,
+        displayName: fullName,
       });
       // console.log("click");
     });

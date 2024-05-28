@@ -132,7 +132,7 @@ const Groups = () => {
               />
             </div>
           </div>
-          <div>
+          <div className="mx-10 mt-40">
             {loading ? (
               <p>Loading...</p>
             ) : groupList.length > 0 ? (

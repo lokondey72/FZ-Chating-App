@@ -5,13 +5,13 @@ import { Link } from "react-router-dom";
 
 const HomeDropdone = () => {
   const [open, setOpen] = useState("");
-  const [logOut, setLogOut] = useState(false)
+  const [logOut, setLogOut] = useState(false);
   const hendelclik = () => {
     setOpen(!open);
   };
-const hendelLogout = () =>{
-  setLogOut(localStorage.setItem("user", JSON.stringify("")))
-}
+  const hendelLogout = () => {
+    setLogOut(localStorage.setItem("user", JSON.stringify("")));
+  };
 
   return (
     <>
@@ -56,7 +56,7 @@ const hendelLogout = () =>{
               </li>
               <li>
                 <Link
-                  onClick={()=>hendelLogout(logOut)}
+                  onClick={() => hendelLogout(logOut)}
                   to="/login"
                   className="text-gray-700 block px-4 py-2 text-sm"
                   role="menuitem"

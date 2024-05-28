@@ -37,6 +37,8 @@ const FriendRequests = () => {
     });
   }, []);
 
+  // console.log(requestList);
+
   return (
     <>
       <div className="w-full bg-white overflow-y-scroll overflow-x-hidden h-screen">
