@@ -12,7 +12,6 @@ import Profile from "./pages/Profile";
 import Chat from "./pages/Chat/";
 import Groups from "./pages/Groups";
 import Friends from "./pages/Friends";
-import Game from "./pages/Game";
 import People from "./pages/People";
 import FriendRequests from "./pages/FriendRequests";
 import BlockList from "./pages/BlockList";
@@ -23,7 +22,6 @@ function App() {
       <Route>
         <Route path="/signup" element={<SignUp />}></Route>
         <Route path="/login" element={<LogIn />}></Route>
-        <Route path="/game" element={<Game />}></Route>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />}></Route>
           <Route path="/profile" element={<Profile />}></Route>

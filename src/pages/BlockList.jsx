@@ -26,15 +26,15 @@ const BlockList = () => {
 
   return (
     <>
-      <div className="bg-white overflow-y-scroll overflow-x-hidden w-full h-screen">
-        <div className="w-1/2 m-auto">
-          <div className="w-[485px] pb-4 bg-white fixed top-0">
+      <div className="w-full bg-white overflow-y-scroll overflow-x-hidden h-screen">
+        <div className="lg:w-1/2 lg:m-auto">
+          <div className="w-full sm:w-[465px] lg:w-[485px] pb-4 bg-white fixed top-0">
             <div className="flex items-center mx-7 mt-5 mb-6 text-lg font-semibold text-primary">
               <h2 className="title mr-24">
                 <Link to="/blocklist">Block List</Link>
               </h2>
             </div>
-            <div className="w-full flex items-center border-black border rounded-lg justify-center mx-5">
+            <div className="flex items-center border-black border rounded-lg justify-center mx-5">
               <div className="p-4 rounded-l-lg bg-slate-300">
                 <FaSearch />
               </div>

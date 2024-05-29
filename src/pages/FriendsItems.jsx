@@ -34,7 +34,7 @@ const FriendsItems = ({ data }) => {
   };
   return (
     <>
-      <div className="flex w-1/2 cursor-pointer items-center my-5 gap-5">
+      <div className="flex w-full lg:w-1/2 cursor-pointer items-center my-5 gap-5">
         <div className="w-14 h-14 rounded-full overflow-hidden">
           <img src={data?.friendImg} alt="rikto-ltd-imgs" />
         </div>
@@ -46,15 +46,23 @@ const FriendsItems = ({ data }) => {
             <FaEllipsisH />
           </button>
           {open ? (
-            <div className="bg-black p-1 absolute ">
+            <div className="p-1 absolute right-5 lg:right-1/2">
               <ul className="flex gap-3 text-white text-center">
                 <li>
-                  <button onClick={() => handelUnfriend(data.key)}>
+                  <button
+                    className="py-2 px-4 rounded-xl bg-slate-500"
+                    onClick={() => handelUnfriend(data.key)}
+                  >
                     Unfriens
                   </button>
                 </li>
                 <li>
-                  <button onClick={() => handelBlock(data)}>block</button>
+                  <button
+                    className="py-2 px-4 rounded-xl bg-slate-500"
+                    onClick={() => handelBlock(data)}
+                  >
+                    block
+                  </button>
                 </li>
               </ul>
             </div>

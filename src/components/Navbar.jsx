@@ -31,24 +31,19 @@ const Navbar = () => {
   return (
     <div>
       <div className="fixed z-30 sm:hidden ml-2">
-        <button onClick={handelShow} className="text-4xl text-whit">
+        <button
+          onClick={() => handelShow(setShowDrop(false))}
+          className="text-4xl text-whit"
+        >
           <CgDetailsMore />
         </button>
       </div>
 
       {show && (
-        <div className="w-60 fixed z-20 overflow-y-scroll overflow-x-hidden pt-5 bg-slate-400">
-          {/* <div className="ml-2">
-            <button
-              onClick={() => setShow(true)}
-              className="text-4xl text-whit"
-            >
-              <CgDetailsMore />
-            </button>
-          </div> */}
-          <div className="mt-6 inline-block">
+        <div className="w-56 h-screen fixed z-20 pt-5 bg-slate-400">
+          <div className="xl:ml-6 sm:ml-0 inline-block">
             <Link to="/">
-              <div className="flex w-36 mb-5 text-center">
+              <div className="flex w-32 h-14 my-10 text-center">
                 <img
                   className="w-full"
                   src="/FZ-app-login-logo.png"
@@ -58,53 +53,57 @@ const Navbar = () => {
               </div>
             </Link>
           </div>
-          <button>
-            <Link to="/profile">
-              <button className="flex items-center gap-2 p-2 xl:mx-4 mb-5">
-                <div className="w-14  xl:w-14 xl:h-14 sm:w-10 sm:h-9 rounded-full overflow-hidden">
-                  <img src={user?.photoURL} alt="NavProfile" />
-                </div>
-                <div className="mr-2">
-                  <h2 className="xl:text-xl sm:text-sm font-semibold">
-                    {user?.displayName}
-                  </h2>
-                  <p className="sm:text-xs sm:w-16">Edit Profile</p>
-                </div>
-                {/* <div className="text-xl text-slate-50 font-semibold">
-          <IoSettings />
-        </div> */}
-              </button>
-            </Link>
-          </button>
+          <div className="mx-2 mb-5">
+            <button
+              onClick={() => handeldrop(setShow(false))}
+              className="w-full inline-flex justify-center text-4xl rounded-xl px-3 py-2 font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-800 hover:text-white hover:bg-gray-800"
+              type="button"
+              id="menu-button"
+            >
+              <CgMenuRound />
+            </button>
+          </div>
           <ul className="flex flex-col gap-5 items-center">
             <li className="bg-brand text-slate-50 rounded-xl">
               <Link to="/">
-                <button className="text-lg flex items-center gap-3 py-5 px-10">
+                <button
+                  onClick={() => setShowDrop(false)}
+                  className="text-lg flex items-center gap-3 py-5 px-10"
+                >
                   <FaHome />
-                  <span>Home</span>
+                  <p>Home</p>
                 </button>
               </Link>
             </li>
             <li className="text-slate-50 rounded-xl">
               <Link to="/chat">
-                <button className="text-lg flex items-center gap-3 py-5 px-10">
+                <button
+                  onClick={() => setShowDrop(false)}
+                  className="text-lg flex items-center gap-3 py-5 px-10"
+                >
                   <IoChatboxEllipses />
-                  <span>Chat</span>
+                  <p>Chat</p>
                 </button>
               </Link>
             </li>
             <li className="text-slate-50 rounded-xl">
               <Link to="/group">
-                <button className="text-lg flex items-center gap-3 py-5 px-10">
+                <button
+                  onClick={() => setShowDrop(false)}
+                  className="text-lg flex items-center gap-3 py-5 px-10"
+                >
                   <RiGroup2Fill className="flex gap-5 text-4xl" />
-                  <span>Group</span>
+                  <p>Group</p>
                 </button>
               </Link>
             </li>
 
             <li className="text-slate-50 rounded-xl">
               <Link to="/friends">
-                <button className="text-lg flex items-center gap-3 py-5 px-10">
+                <button
+                  onClick={() => setShowDrop(false)}
+                  className="text-lg flex items-center gap-3 py-5 px-10"
+                >
                   <FaUser />
                   Friends
                 </button>
@@ -112,25 +111,12 @@ const Navbar = () => {
             </li>
             <li className="text-slate-50 rounded-xl">
               <Link to="/people">
-                <button className="text-lg flex items-center gap-3 py-5 px-10">
+                <button
+                  onClick={() => setShowDrop(false)}
+                  className="text-lg flex items-center gap-3 py-5 px-10"
+                >
                   <IoPeople />
                   People
-                </button>
-              </Link>
-            </li>
-            <li className="text-slate-50 rounded-xl">
-              <Link to="/friendrequest">
-                <button className="text-lg flex items-center gap-3 py-5 px-10">
-                  <FaRegAddressCard />
-                  Friend Requests
-                </button>
-              </Link>
-            </li>
-            <li className="text-slate-50 rounded-xl">
-              <Link to="/blocklist">
-                <button className="text-lg flex items-center gap-3 py-5 px-10">
-                  <GoBlocked />
-                  Block
                 </button>
               </Link>
             </li>
@@ -138,7 +124,8 @@ const Navbar = () => {
           <div className="flex justify-center pb-10">
             <button className="bg-primary px-6 py-2 rounded-lg">
               <Link
-                to="#"
+                onClick={() => hendelLogout(logOut)}
+                to="/login"
                 className="text-slate-50 block px-4 py-2 text-sm"
                 role="menuitem"
                 tabindex="-1"
@@ -153,7 +140,7 @@ const Navbar = () => {
 
       {showDrop && (
         <div>
-          <div className="w-1/3 absolute left-60 bg-slate-400 top-0 z-10">
+          <div className="w-full sm:w-1/3 absolute lg:left-60 bg-slate-400 top-0 z-10">
             <div className="px-10 py-3">
               <div className="flex w-full items-center ">
                 <input
@@ -170,7 +157,7 @@ const Navbar = () => {
                   onClick={() => setShowDrop(!showDrop)}
                   className="w-full p-2 mb-10"
                 >
-                  <div className="xl:w-14 xl:h-14 sm:w-10 sm:h-9 mx-auto rounded-full overflow-hidden">
+                  <div className="w-24 h-24 xl:w-14 xl:h-14 sm:w-10 sm:h-9 mx-auto rounded-full overflow-hidden">
                     <img src={user?.photoURL} alt="NavProfile" />
                   </div>
                   <div className="mr-2">
@@ -181,12 +168,12 @@ const Navbar = () => {
                   </div>
                 </button>
               </Link>
-              <div className="flex sm:gap-2 xl:gap-10">
+              <div className="flex flex-col lg:flex-row sm:gap-2 xl:gap-10">
                 <div className="flex w-full justify-center rounded-xl font-semibold text-gray-900 shadow-sm hover:text-white hover:bg-gray-800">
                   <Link to="/friendrequest">
                     <button
                       onClick={() => setShowDrop(!showDrop)}
-                      className="w-40 text-lg text-white flex items-center gap-3 py-2 px-5"
+                      className="text-lg text-white flex items-center gap-3 py-2 px-5"
                     >
                       <FaRegAddressCard className="text-5xl" />
                       <p>Friend Requests</p>
@@ -247,19 +234,6 @@ const Navbar = () => {
             <CgMenuRound />
           </button>
         </div>
-        {/* <Link to="/profile">
-          <button className="flex items-center gap-2 p-2 xl:mx-4 sm:mx-0 mb-10">
-            <div className="xl:w-14 xl:h-14 sm:w-10 sm:h-9 rounded-full overflow-hidden">
-              <img src={user?.photoURL} alt="NavProfile" />
-            </div>
-            <div className="mr-2">
-              <h2 className="xl:text-xl sm:text-sm font-semibold">
-                {user?.displayName}
-              </h2>
-              <p className="sm:text-xs sm:w-16">Edit Profile</p>
-            </div>
-          </button>
-        </Link> */}
         <ul className="flex flex-col gap-5 items-center">
           <li className="bg-brand text-slate-50 rounded-xl">
             <Link to="/">
@@ -302,22 +276,6 @@ const Navbar = () => {
               </button>
             </Link>
           </li>
-          {/* <li className="text-slate-50 rounded-xl">
-            <Link to="/friendrequest">
-              <button className="text-lg flex items-center gap-3 py-5 px-10">
-                <FaRegAddressCard />
-                Friend Requests
-              </button>
-            </Link>
-          </li>
-          <li className="text-slate-50 rounded-xl">
-            <Link to="/blocklist">
-              <button className="text-lg flex items-center gap-3 py-5 px-10">
-                <GoBlocked />
-                Block
-              </button>
-            </Link>
-          </li> */}
         </ul>
         <div className="flex justify-center pb-10">
           <button className="bg-primary px-6 py-2 rounded-lg">

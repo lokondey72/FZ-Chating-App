@@ -27,7 +27,7 @@ const Requests = ({ requList, frRequId }) => {
 
   return (
     <>
-      <div className="flex cursor-pointer items-center my-5 gap-5">
+      <div className="flex w-full lg:w-1/2 cursor-pointer items-center my-5 gap-5">
         <div className="w-14 h-14 rounded-full overflow-hidden">
           <img src={requList?.photoURL} alt="People Img" />
         </div>

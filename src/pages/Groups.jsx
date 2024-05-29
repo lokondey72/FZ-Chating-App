@@ -108,9 +108,9 @@ const Groups = () => {
           </div>
         </div>
       )}
-      <div className="bg-white overflow-y-scroll overflow-x-hidden w-full h-screen">
-        <div className="w-1/2 m-auto">
-          <div className="sm:w-[465px] xl:w-[485px] ml-2 pb-4 bg-white fixed top-0">
+      <div className="w-full bg-white overflow-y-scroll overflow-x-hidden h-screen">
+        <div className="lg:w-1/2 lg:m-auto">
+          <div className="w-full sm:w-[465px] lg:w-[485px] pb-4 bg-white fixed top-0">
             <div className="flex justify-between items-center mx-7 my-5 text-lg font-semibold text-primary">
               <h2 className="title">
                 <Link to="/chat">Group</Link>
