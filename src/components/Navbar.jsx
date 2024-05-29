@@ -184,7 +184,10 @@ const Navbar = () => {
               <div className="flex sm:gap-2 xl:gap-10">
                 <div className="flex w-full justify-center rounded-xl font-semibold text-gray-900 shadow-sm hover:text-white hover:bg-gray-800">
                   <Link to="/friendrequest">
-                    <button className="w-40 text-lg flex items-center gap-3 py-2 px-5">
+                    <button
+                      onClick={() => setShowDrop(!showDrop)}
+                      className="w-40 text-lg text-white flex items-center gap-3 py-2 px-5"
+                    >
                       <FaRegAddressCard className="text-5xl" />
                       <p>Friend Requests</p>
                     </button>
@@ -192,14 +195,28 @@ const Navbar = () => {
                 </div>
                 <div className="flex w-full justify-center rounded-xl font-semibold text-gray-900 shadow-sm hover:text-white hover:bg-gray-800">
                   <Link to="/blocklist">
-                    <button className="text-lg flex items-center gap-3 py-2 px-5">
+                    <button
+                      onClick={() => setShowDrop(!showDrop)}
+                      className="text-lg text-white flex items-center gap-3 py-2 px-5"
+                    >
                       <GoBlocked className="text-5xl" />
                       Block
                     </button>
                   </Link>
                 </div>
-                <div className="flex w-full justify-center rounded-xl px-2 py-2 text-sm font-semibold text-gray-900 shadow-sm hover:text-white hover:bg-gray-800">
-                  <Link to="/game">IoGameController</Link>
+                <div className="flex w-full justify-center rounded-xl font-semibold text-gray-900 shadow-sm hover:text-white hover:bg-gray-800">
+                  <button className="px-6 py-2 rounded-lg">
+                    <Link
+                      onClick={() => hendelLogout(logOut)}
+                      to="/login"
+                      className="text-white block px-4 py-2 text-sm"
+                      role="menuitem"
+                      tabindex="-1"
+                      id="menu-item-0"
+                    >
+                      Log Out
+                    </Link>
+                  </button>
                 </div>
               </div>
             </div>
@@ -292,7 +309,7 @@ const Navbar = () => {
                 Friend Requests
               </button>
             </Link>
-          </li> */}
+          </li>
           <li className="text-slate-50 rounded-xl">
             <Link to="/blocklist">
               <button className="text-lg flex items-center gap-3 py-5 px-10">
@@ -300,7 +317,7 @@ const Navbar = () => {
                 Block
               </button>
             </Link>
-          </li>
+          </li> */}
         </ul>
         <div className="flex justify-center pb-10">
           <button className="bg-primary px-6 py-2 rounded-lg">

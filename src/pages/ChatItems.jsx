@@ -1,7 +1,7 @@
 const ChatItems = ({ imgUrl, idName, msg, day }) => {
   return (
     <>
-      <div className="flex cursor-pointer items-center my-5 gap-5">
+      <div className="flex w-1/2 cursor-pointer items-center my-5 gap-5">
         <div className="w-14 h-14 rounded-full overflow-hidden">
           <img src={imgUrl} alt="rikto-ltd-imgs" />
         </div>
