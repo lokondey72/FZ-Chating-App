@@ -28,7 +28,7 @@ const BlockList = () => {
     <>
       <div className="bg-white overflow-y-scroll overflow-x-hidden w-full h-screen">
         <div className="w-1/2 m-auto">
-          <div className="w-[740px] pb-4 bg-white fixed top-0">
+          <div className="w-[485px] pb-4 bg-white fixed top-0">
             <div className="flex items-center mx-7 mt-5 mb-6 text-lg font-semibold text-primary">
               <h2 className="title mr-24">
                 <Link to="/blocklist">Block List</Link>
@@ -51,7 +51,7 @@ const BlockList = () => {
                 <BlockLIstItems key={item.key} data={item} />
               ))
             ) : (
-              <p className="text-center font-bold">No Block's Available</p>
+              <p className="text-center w-1/2 font-bold">No Block's Available</p>
             )}
           </div>
         </div>

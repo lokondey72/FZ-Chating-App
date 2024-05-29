@@ -110,7 +110,7 @@ const Groups = () => {
       )}
       <div className="bg-white overflow-y-scroll overflow-x-hidden w-full h-screen">
         <div className="w-1/2 m-auto">
-          <div className="sm:w-[465px] xl:w-5/12 ml-2 pb-4 bg-white fixed top-0">
+          <div className="sm:w-[465px] xl:w-[485px] ml-2 pb-4 bg-white fixed top-0">
             <div className="flex justify-between items-center mx-7 my-5 text-lg font-semibold text-primary">
               <h2 className="title">
                 <Link to="/chat">Group</Link>
@@ -140,7 +140,7 @@ const Groups = () => {
                 <GroupsItems key={item.key} data={item} myGroup={true} />
               ))
             ) : (
-              <p className="text-center font-bold">No Friends Available</p>
+              <p className="text-center w-1/2 font-bold">No Friends Available</p>
             )}
           </div>
           <div className="mx-10 mt-20">
@@ -152,7 +152,7 @@ const Groups = () => {
                 <AnotherGroup key={item.key} data={item} />
               ))
             ) : (
-              <p className="text-center font-bold">No Friends Available</p>
+              <p className="text-center w-1/2 font-bold">No Friends Available</p>
             )}
           </div>
         </div>

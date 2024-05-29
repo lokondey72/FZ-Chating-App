@@ -84,7 +84,9 @@ const GroupsItems = ({ data, myGroup }) => {
     const starCountRef = ref(db, "groupMembers/");
     onValue(starCountRef, (snapshot) => {
       snapshot.forEach((item) => {
-        arr.push(item.val().createById + item.val().mumberId);
+        if (data.key == item.val().groupId) {
+          arr.push(item.val().createById + item.val().mumberId);
+        }
       });
       setMumberId(arr);
     });
@@ -95,7 +97,9 @@ const GroupsItems = ({ data, myGroup }) => {
     const starCountRef = ref(db, "groupMembers/");
     onValue(starCountRef, (snapshot) => {
       snapshot.forEach((item) => {
-        arr.push({ ...item.val(), key: item.key });
+        if (data.key == item.val().groupId) {
+          arr.push({ ...item.val(), key: item.key });
+        }
       });
       setMumberList(arr);
     });
@@ -155,7 +159,7 @@ const GroupsItems = ({ data, myGroup }) => {
             </div>
             <div className="flex flex-col items-center justify-center mx-14 mt-5 mb-20 gap-5">
               <h4 className="text-3xl text-white font-bold mb-3 border-b border-brand font-nunitoFont">
-                Add Group Mumber
+                {data?.groupName}
               </h4>
               <div className="flex items-center gap-3">
                 <div>
@@ -212,6 +216,9 @@ const GroupsItems = ({ data, myGroup }) => {
               </button>
             </div>
             <div className="flex flex-col items-center justify-center mx-14 mt-5 mb-20 gap-5">
+              <h4 className="text-2xl text-white font-bold mb-3 font-nunitoFont">
+                {data?.groupName}
+              </h4>
               <h4 className="text-3xl text-white font-bold mb-3 border-b border-brand font-nunitoFont">
                 Group Mumber's
               </h4>

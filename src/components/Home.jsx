@@ -7,9 +7,9 @@ const Home = () => {
   return (
     <>
       <div className="w-full">
-        <HomeHeader />
+        {/* <HomeHeader /> */}
         {/* <div className="w-full ml-auto bg-slate-400"></div> */}
-        <div className="flex justify-center flex-wrap xl:mx-10 sm:mx-0 mt-36 gap-14">
+        <div className="flex justify-center flex-wrap xl:mx-10 sm:mx-0 mt-10 gap-14">
           <HomeItems
             imgUrl="/Rikto-ltd.jpg"
             usernam="Noteworthy technology acquisitions 2021"

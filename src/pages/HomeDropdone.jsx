@@ -34,7 +34,6 @@ const HomeDropdone = () => {
               </li>
               <li>
                 <Link
-                  href="#"
                   className="text-gray-700 block px-4 py-2 text-sm"
                   role="menuitem"
                   tabindex="-1"
@@ -45,7 +44,6 @@ const HomeDropdone = () => {
               </li>
               <li>
                 <Link
-                  href="#"
                   className="text-gray-700 block px-4 py-2 text-sm"
                   role="menuitem"
                   tabindex="-1"
