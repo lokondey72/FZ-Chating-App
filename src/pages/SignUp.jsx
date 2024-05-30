@@ -43,7 +43,7 @@ const SignUp = () => {
           sendEmailVerification(auth.currentUser);
           updateProfile(auth.currentUser, {
             displayName: userName + " " + lastName,
-            photoURL: "/public/user-dufolt-img.png",
+            photoURL: "/user-dufolt-img.png",
           }).then((res) => {
             toast.success(
               "SignUp successfull... Please verify your email address",

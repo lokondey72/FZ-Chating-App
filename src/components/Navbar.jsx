@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FaHome, FaUser, FaRegAddressCard } from "react-icons/fa";
 import { CgDetailsMore } from "react-icons/cg";
 import {
@@ -17,6 +17,9 @@ const Navbar = () => {
   let [show, setShow] = useState(false);
   let [showDrop, setShowDrop] = useState(false);
   const [logOut, setLogOut] = useState(false);
+  const location = useLocation().pathname;
+
+  // console.log(location);
 
   const handelShow = () => {
     setShow(!show);
@@ -64,10 +67,10 @@ const Navbar = () => {
             </button>
           </div>
           <ul className="flex flex-col gap-5 items-center">
-            <li className="bg-brand text-slate-50 rounded-xl">
+            <li className="text-slate-50 rounded-xl">
               <Link to="/">
                 <button
-                  onClick={() => setShowDrop(false)}
+                  onClick={() => setShow(false)}
                   className="text-lg flex items-center gap-3 py-5 px-10"
                 >
                   <FaHome />
@@ -78,7 +81,7 @@ const Navbar = () => {
             <li className="text-slate-50 rounded-xl">
               <Link to="/chat">
                 <button
-                  onClick={() => setShowDrop(false)}
+                  onClick={() => setShow(false)}
                   className="text-lg flex items-center gap-3 py-5 px-10"
                 >
                   <IoChatboxEllipses />
@@ -89,7 +92,7 @@ const Navbar = () => {
             <li className="text-slate-50 rounded-xl">
               <Link to="/group">
                 <button
-                  onClick={() => setShowDrop(false)}
+                  onClick={() => setShow(false)}
                   className="text-lg flex items-center gap-3 py-5 px-10"
                 >
                   <RiGroup2Fill className="flex gap-5 text-4xl" />
@@ -101,7 +104,7 @@ const Navbar = () => {
             <li className="text-slate-50 rounded-xl">
               <Link to="/friends">
                 <button
-                  onClick={() => setShowDrop(false)}
+                  onClick={() => setShow(false)}
                   className="text-lg flex items-center gap-3 py-5 px-10"
                 >
                   <FaUser />
@@ -112,7 +115,7 @@ const Navbar = () => {
             <li className="text-slate-50 rounded-xl">
               <Link to="/people">
                 <button
-                  onClick={() => setShowDrop(false)}
+                  onClick={() => setShow(false)}
                   className="text-lg flex items-center gap-3 py-5 px-10"
                 >
                   <IoPeople />
@@ -140,7 +143,7 @@ const Navbar = () => {
 
       {showDrop && (
         <div>
-          <div className="w-full sm:w-1/3 absolute lg:left-60 bg-slate-400 top-0 z-10">
+          <div className="w-full sm:w-3/5 md:w-1/3 absolute sm:left-40 lg:left-60 bg-slate-400 top-0 z-10">
             <div className="px-10 py-3">
               <div className="flex w-full items-center ">
                 <input
@@ -211,7 +214,7 @@ const Navbar = () => {
         </div>
       )}
 
-      <div className="w-0 sm:w-36 xl:w-64 h-full fixed z-20 overflow-y-scroll overflow-x-hidden sm:overflow-y-scroll sm:overflow-x-hidden lg:overflow-y-hidden lg:overflow-x-hidden pt-5 bg-slate-400">
+      <div className="w-0 sm:w-40 xl:w-64 h-full fixed z-20 overflow-y-scroll overflow-x-hidden sm:overflow-y-scroll sm:overflow-x-hidden lg:overflow-y-hidden lg:overflow-x-hidden pt-5 bg-slate-400">
         <div className="xl:ml-6 sm:ml-0 inline-block">
           <Link to="/">
             <div className="flex sm:w-32 sm:h-10 xl:w-20 mb-10 text-center">
@@ -235,9 +238,13 @@ const Navbar = () => {
           </button>
         </div>
         <ul className="flex flex-col gap-5 items-center">
-          <li className="bg-brand text-slate-50 rounded-xl">
+          <li className="text-white">
             <Link to="/">
-              <button className="text-lg flex items-center gap-3 py-5 px-10">
+              <button
+                className={`${
+                  location == "/" && "bg-brand text-white"
+                }text-lg rounded-xl flex items-center gap-3 py-5 px-10`}
+              >
                 <FaHome />
                 <span>Home</span>
               </button>
@@ -245,7 +252,11 @@ const Navbar = () => {
           </li>
           <li className="text-slate-50 rounded-xl">
             <Link to="/chat">
-              <button className="text-lg flex items-center gap-3 py-5 px-10">
+              <button
+                className={`${
+                  location == "/chat" && "bg-brand text-white"
+                }text-lg rounded-xl flex items-center gap-3 py-5 px-10`}
+              >
                 <IoChatboxEllipses />
                 <span>Chat</span>
               </button>
@@ -253,7 +264,11 @@ const Navbar = () => {
           </li>
           <li className="text-slate-50 rounded-xl">
             <Link to="/group">
-              <button className="text-lg flex items-center gap-3 py-5 px-10">
+              <button
+                className={`${
+                  location == "/group" && "bg-brand text-white"
+                }text-lg rounded-xl flex items-center gap-3 py-5 px-10`}
+              >
                 <RiGroup2Fill className="flex gap-5 text-4xl" />
                 <span>Group</span>
               </button>
@@ -262,7 +277,11 @@ const Navbar = () => {
 
           <li className="text-slate-50 rounded-xl">
             <Link to="/friends">
-              <button className="text-lg flex items-center gap-3 py-5 px-10">
+              <button
+                className={`${
+                  location == "/friends" && "bg-brand text-white"
+                }text-lg rounded-xl flex items-center gap-3 py-5 px-10`}
+              >
                 <FaUser />
                 Friends
               </button>
@@ -270,7 +289,9 @@ const Navbar = () => {
           </li>
           <li className="text-slate-50 rounded-xl">
             <Link to="/people">
-              <button className="text-lg flex items-center gap-3 py-5 px-10">
+              <button className={`${
+                location == "/people" && "bg-brand text-white"
+              }text-lg rounded-xl flex items-center gap-3 py-5 px-10`}>
                 <IoPeople />
                 People
               </button>

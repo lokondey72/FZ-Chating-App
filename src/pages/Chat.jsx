@@ -1,13 +1,46 @@
 import { Link } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import ChatItems from "./ChatItems";
+import { useEffect, useState } from "react";
+import { getDatabase, onValue, ref } from "firebase/database";
+import { useSelector } from "react-redux";
 
 const chat = () => {
+  const db = getDatabase();
+  const [friendList, setFriendList] = useState([]);
+  const user = useSelector((state) => state.userSlice.user);
+
+  useEffect(() => {
+    let arr = [];
+    const starCountRef = ref(db, "friends/");
+    onValue(starCountRef, (snapshot) => {
+      snapshot.forEach((item) => {
+        if (item.val().friendId == user.uid) {
+          arr.push({
+            friendId: item.val().reciverId,
+            friendName: item.val().reciverName,
+            friendImg: item.val().reciverProfile,
+            key: item.key,
+          });
+        } else if (item.val().reciverId == user.uid) {
+          arr.push({
+            friendId: item.val().friendId,
+            friendName: item.val().friendName,
+            friendImg: item.val().friendProfile,
+            key: item.key,
+          });
+        }
+      });
+      setFriendList(arr);
+    });
+  }, []);
+  // console.log(friendList);
+
   return (
     <>
-      <div className="w-full bg-white overflow-y-scroll overflow-x-hidden h-screen">
-        <div className="lg:w-1/2 lg:m-auto">
-          <div className="w-full sm:w-[465px] lg:w-[485px] pb-4 bg-white fixed top-0">
+      <div className="w-full bg-white overflow-y-scroll h-screen">
+        <div className="lg:w-1/2 mx-auto">
+          <div className="w-full sm:w-[465px] lg:w-2/5 sm:right-0 lg:left-[680px] pb-4 bg-white fixed top-0">
             <div className="flex items-center mx-7 mt-5 mb-6 text-lg font-semibold text-primary">
               <h2 className="title mr-24">
                 <Link to="/chat">Friends Chat</Link>
@@ -25,84 +58,13 @@ const chat = () => {
             </div>
           </div>
           <div className="mx-7 mt-48">
-            <ChatItems
-              imgUrl="/public/uploded-you-img.jpg"
-              idName="Jenny Wilson"
-              msg="Love You....."
-              day="Now"
-            />
-            <ChatItems
-              imgUrl="/public/WhatsApp-img.jpg"
-              idName="Rikto Dey"
-              msg="go....."
-              day="Now"
-            />
-            <ChatItems
-              imgUrl="/public/rikto-ltd-imgs.jpg"
-              idName="Jenny Wilson"
-              msg="hate You....."
-              day="Yesterday"
-            />
-            <ChatItems
-              imgUrl="/public/WhatsApp-img.jpg"
-              idName="Lokon Dey Sarker"
-              msg="Love You....."
-              day="Yesterday"
-            />
-            <ChatItems
-              imgUrl="/public/rikto-ltd-imgs.jpg"
-              idName="Jenny Wilson"
-              msg="Love You....."
-              day="Yesterday"
-            />
-            <ChatItems
-              imgUrl="/public/WhatsApp-img.jpg"
-              idName="Lokon Dey Sarker"
-              msg="Love You....."
-              day="Yesterday"
-            />
-            <ChatItems
-              imgUrl="/public/WhatsApp-img.jpg"
-              idName="Lokon Dey Sarker"
-              msg="Love You....."
-              day="Yesterday"
-            />
-            <ChatItems
-              imgUrl="/public/WhatsApp-img.jpg"
-              idName="Lokon Dey Sarker"
-              msg="Love You....."
-              day="Yesterday"
-            />
-            <ChatItems
-              imgUrl="/public/WhatsApp-img.jpg"
-              idName="Lokon Dey Sarker"
-              msg="Love You....."
-              day="Yesterday"
-            />
-            <ChatItems
-              imgUrl="/public/WhatsApp-img.jpg"
-              idName="Lokon Dey Sarker"
-              msg="Love You....."
-              day="Yesterday"
-            />
-            <ChatItems
-              imgUrl="/public/WhatsApp-img.jpg"
-              idName="Lokon Dey Sarker"
-              msg="Love You....."
-              day="Yesterday"
-            />
-            <ChatItems
-              imgUrl="/public/WhatsApp-img.jpg"
-              idName="Lokon Dey Sarker"
-              msg="Love You....."
-              day="Yesterday"
-            />
-            <ChatItems
-              imgUrl="/public/WhatsApp-img.jpg"
-              idName="Lokon Dey Sarker"
-              msg="Love You....."
-              day="Yesterday"
-            />
+            {friendList.length > 0 ? (
+              friendList.map((item) => <ChatItems key={item.key} data={item} />)
+            ) : (
+              <p className="text-center w-1/2 font-bold">
+                No Friends Available
+              </p>
+            )}
           </div>
         </div>
       </div>
