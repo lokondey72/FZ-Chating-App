@@ -3,11 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 export const chatIdSlice = createSlice({
   name: "friendId",
   initialState: {
-    chatId: null,
+    friendInfo: null,
   },
   reducers: {
     friendChatId: (state, action) => {
-      state.chatId = action.payload;
+      state.friendInfo = action.payload;
     },
   },
 });

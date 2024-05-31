@@ -9,6 +9,8 @@ const chat = () => {
   const db = getDatabase();
   const [friendList, setFriendList] = useState([]);
   const user = useSelector((state) => state.userSlice.user);
+  // const friend = useSelector((state) => state.chatIdSlice);
+  // console.log(friend);
 
   useEffect(() => {
     let arr = [];

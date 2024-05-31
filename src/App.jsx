@@ -15,6 +15,7 @@ import Friends from "./pages/Friends";
 import People from "./pages/People";
 import FriendRequests from "./pages/FriendRequests";
 import BlockList from "./pages/BlockList";
+import ChatBox from "./pages/ChatBox";
 
 function App() {
   const router = createBrowserRouter(
@@ -26,6 +27,7 @@ function App() {
           <Route index element={<Home />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="/chat" element={<Chat />}></Route>
+          <Route path="/messag" element={<ChatBox />}></Route>
           <Route path="/group" element={<Groups />}></Route>
           <Route path="/friends" element={<Friends />}></Route>
           <Route path="/people" element={<People />}></Route>

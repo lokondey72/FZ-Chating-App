@@ -266,21 +266,8 @@ const Profile = () => {
           <div className="flex justify-center flex-wrap gap-10">
             <ProfileItems
               profilePost={user.photoURL}
-              profPera="With a passion for design and video editing that spans over 5 years, I'm here to bring your creative visions to life. As an experienced designer and video editor, I offer a wide range of services that will elevate your content to the next level.
-
-              What sets me apart:
-              ✅ Adept at the latest design and editing software
-              ✅ Creative flair and attention to detail
-              ✅ Excellent communication for a seamless collaboration
-              ✅ Competitive pricing and custom packages."
             />
-            <ProfileItems
-              profilePost={user.photoURL}
-              profPera="Here are the biggest enterprise technology acquisitions of 2021 so
-            far, in reverse chronological order Here are the biggest enterprise technology acquisitions of 2021 so
-            far, in reverse chronological order Here are the biggest enterprise technology acquisitions of 2021 so
-            far, in reverse chronological order."
-            />
+            
           </div>
         </div>
       </div>
