@@ -7,6 +7,7 @@ const ChatItems = ({ data }) => {
 
   const handelFriendList = () => {
     disptch(friendChatId(data));
+    localStorage.setItem("friendInfo", JSON.stringify(data));
   };
 
   return (

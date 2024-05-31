@@ -214,7 +214,7 @@ const Navbar = () => {
         </div>
       )}
 
-      <div className="w-0 sm:w-40 xl:w-64 h-full fixed z-20 overflow-y-scroll overflow-x-hidden sm:overflow-y-scroll sm:overflow-x-hidden lg:overflow-y-hidden lg:overflow-x-hidden pt-5 bg-slate-400">
+      <div className="w-0 sm:w-40 xl:w-64 h-full fixed z-20 overflow-y-scroll  pt-5 bg-slate-400">
         <div className="xl:ml-6 sm:ml-0 inline-block">
           <Link to="/">
             <div className="flex sm:w-32 sm:h-10 xl:w-20 mb-10 text-center">
@@ -246,7 +246,7 @@ const Navbar = () => {
                 }text-lg rounded-xl flex items-center gap-3 py-5 px-10`}
               >
                 <FaHome />
-                <span>Home</span>
+                <p>Home</p>
               </button>
             </Link>
           </li>
@@ -258,7 +258,7 @@ const Navbar = () => {
                 }text-lg rounded-xl flex items-center gap-3 py-5 px-10`}
               >
                 <IoChatboxEllipses />
-                <span>Chat</span>
+                <p>Chat</p>
               </button>
             </Link>
           </li>
@@ -270,7 +270,7 @@ const Navbar = () => {
                 }text-lg rounded-xl flex items-center gap-3 py-5 px-10`}
               >
                 <RiGroup2Fill className="flex gap-5 text-4xl" />
-                <span>Group</span>
+                <p>Group</p>
               </button>
             </Link>
           </li>
@@ -289,29 +289,28 @@ const Navbar = () => {
           </li>
           <li className="text-slate-50 rounded-xl">
             <Link to="/people">
-              <button className={`${
-                location == "/people" && "bg-brand text-white"
-              }text-lg rounded-xl flex items-center gap-3 py-5 px-10`}>
+              <button
+                className={`${
+                  location == "/people" && "bg-brand text-white"
+                }text-lg rounded-xl flex items-center gap-3 py-5 px-10`}
+              >
                 <IoPeople />
                 People
               </button>
             </Link>
           </li>
+          <li className="flex justify-center pb-10">
+            <button className="bg-primary px-6 py-2 rounded-lg">
+              <Link
+                onClick={() => hendelLogout(logOut)}
+                to="/login"
+                className="text-slate-50 block px-4 py-2 text-sm"
+              >
+                Log Out
+              </Link>
+            </button>
+          </li>
         </ul>
-        <div className="flex justify-center pb-10">
-          <button className="bg-primary px-6 py-2 rounded-lg">
-            <Link
-              onClick={() => hendelLogout(logOut)}
-              to="/login"
-              className="text-slate-50 block px-4 py-2 text-sm"
-              role="menuitem"
-              tabindex="-1"
-              id="menu-item-0"
-            >
-              Log Out
-            </Link>
-          </button>
-        </div>
       </div>
     </div>
   );
