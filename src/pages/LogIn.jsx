@@ -119,25 +119,22 @@ const LogIn = () => {
         <div className="container">
           <ToastContainer />
           <div>
-            <div className="w-[560px] bg-white shadow-[#00000059_0px_5px_15px] box-border mx-auto my-16 py-10 rounded-3xl">
+            <div className="w-4/5 md:w-[560px] bg-white shadow-[#00000059_0px_5px_15px] box-border mx-auto my-16 py-10 rounded-3xl">
               <div className="w-24 text-center m-auto pb-2">
-                <img
-                  src="/FZ-app-login-logo.png"
-                  alt="FZ-app-login-logo"
-                />
+                <img src="/FZ-app-login-logo.png" alt="FZ-app-login-logo" />
               </div>
               <div className="px-12 pb-2">
                 <h3 className="text-primary text-3xl font-bold font-nunitoFont uppercase mt-3 text-center">
                   Get started with easily Login
                 </h3>
               </div>
-              <div className="text-center pb-4">
+              <div className="w-4/5 mx-auto sm:w-full text-center pb-4">
                 <p className="text-xl font-normal font-nunitoFont text-secandari">
                   Free sign up and you can enjoy it
                 </p>
               </div>
               <div className="w-full flex flex-col px-20 gap-[18px] mb-[15px]">
-                <div>
+                <div className="w-full">
                   <input
                     onChange={(e) => {
                       setLoginData({ ...loginData, email: e.target.value }),
@@ -201,9 +198,9 @@ const LogIn = () => {
                 <div className="m-auto">
                   <button
                     onClick={hendelgoogle}
-                    className="flex items-center gap-3 text-xl shadow-all py-3 px-20 rounded-3xl hover:bg-slate-200"
+                    className="flex items-center gap-2 sm:text-xl shadow-all px-10 py-3 sm:px-20 rounded-3xl hover:bg-slate-200"
                   >
-                    <FcGoogle className="text-4xl" />
+                    <FcGoogle className="sm:text-4xl" />
                     Continue with Google
                   </button>
                 </div>

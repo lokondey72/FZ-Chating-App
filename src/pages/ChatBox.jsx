@@ -12,6 +12,17 @@ const ChatBox = () => {
   const user = useSelector((state) => state.userSlice.user);
   const friend = useSelector((state) => state.chatIdSlice.friendInfo);
 
+  function formatAMPM(date) {
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var ampm = hours >= 12 ? "pm" : "am";
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    var strTime = hours + ":" + minutes + " " + ampm;
+    return strTime;
+  }
+
   const handelsend = () => {
     if (!chatImpot) {
       alert("Please type your message");
@@ -21,6 +32,7 @@ const ChatBox = () => {
         message: chatImpot,
         reciverId: friend.friendId,
         reciverImg: friend.friendImg,
+        timeNow: formatAMPM(new Date()),
       }).then(() => {
         setChatImpot("");
         setRealtime(!realtime);
@@ -77,7 +89,7 @@ const ChatBox = () => {
                 <div className="max-w-[70%] w-fit rounded-xl rounded-br-sm py-2 px-3 bg-white text-primary ml-auto">
                   <p>{item.message}</p>
                 </div>
-                <p className="text-white">10:30PM</p>
+                <p className="text-white">{item.timeNow}</p>
               </div>
             ) : (
               <div key={item.key} className="flex flex-col items-start my-2">
@@ -93,7 +105,7 @@ const ChatBox = () => {
                     <p>{item.message}</p>
                   </div>
                 </div>
-                <p className="text-white ml-10">10:30PM</p>
+                <p className="text-white ml-10">{item.timeNow}</p>
               </div>
             )
           )}
